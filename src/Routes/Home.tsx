@@ -1,8 +1,11 @@
+import Search from "../Components/Search";
+import { DivColumn } from "../Styles/Tags";
+
 function Home() {
   return (
-    <>
-      <h1>Home</h1>
-    </>
+    <DivColumn style={{ paddingTop: "30px" }}>
+      <Search />
+    </DivColumn>
   );
 }
 
