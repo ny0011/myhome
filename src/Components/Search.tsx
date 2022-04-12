@@ -6,6 +6,8 @@ import { DivColumn, Form } from "../Styles/Tags";
 const NAVER_SEARCH =
   "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=";
 
+const ERROR_MESSAGE_COUNTER = 3;
+
 function Search() {
   const [searchOpen, setSearchOpen] = useState(false);
   const toggleSearchForm = () => {
@@ -15,7 +17,7 @@ function Search() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, submitCount },
   } = useForm();
 
   const searchKeyword = (data: any) => {
@@ -48,7 +50,7 @@ function Search() {
             </MotionButton>
           </Form>
           <DivColumn>
-            {errors.keyword && (
+            {submitCount < ERROR_MESSAGE_COUNTER && errors.keyword && (
               <MotionDiv
                 initial={{ opacity: 1 }}
                 animate={{ opacity: 0, display: "none" }}
