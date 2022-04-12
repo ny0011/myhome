@@ -7,7 +7,7 @@ import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
 *{
-  font-family: 'Gowun Dodum', sans-serif;
+  font-family: 'Gowun Dodum' !important;
   font-weight: bold ;
 }
 

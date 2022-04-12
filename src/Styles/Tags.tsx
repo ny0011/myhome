@@ -13,7 +13,7 @@ const Div = styled.div`
 `;
 
 export const DivColumn = styled(Div)`
-  align-items: center;
+  flex-direction: column;
 `;
 
 export default Div;

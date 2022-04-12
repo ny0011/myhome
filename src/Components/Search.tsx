@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import MotionDiv, { MotionButton, MotionInput } from "../Styles/Motions";
-import Div, { Form } from "../Styles/Tags";
+import { DivColumn, Form } from "../Styles/Tags";
 
 const NAVER_SEARCH =
   "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=";
@@ -47,7 +47,7 @@ function Search() {
               ❌
             </MotionButton>
           </Form>
-          <Div>
+          <DivColumn>
             {errors.keyword && (
               <MotionDiv
                 initial={{ opacity: 1 }}
@@ -59,7 +59,7 @@ function Search() {
                 검색할 단어를 넣어줘!
               </MotionDiv>
             )}
-          </Div>
+          </DivColumn>
         </>
       ) : (
         <MotionButton layoutId="searchButton" onClick={toggleSearchForm}>
