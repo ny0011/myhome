@@ -1,11 +1,22 @@
-import Search from "../Components/Search";
+import styled from "styled-components";
+import Bookmark from "./Bookmark";
+import Search from "./Search";
 import { DivColumn } from "../Styles/Tags";
+
+const SearchDiv = styled(DivColumn)`
+  padding-top: 30px;
+`;
 
 function Home() {
   return (
-    <DivColumn style={{ paddingTop: "30px" }}>
-      <Search />
-    </DivColumn>
+    <>
+      <SearchDiv>
+        <Search />
+      </SearchDiv>
+      <SearchDiv>
+        <Bookmark />
+      </SearchDiv>
+    </>
   );
 }
 
