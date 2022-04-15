@@ -1,7 +1,8 @@
-import { useState } from "react";
 import { MotionButton } from "../Styles/Motions";
 import styled from "styled-components";
 import Div from "../Styles/Tags";
+import { useRecoilState } from "recoil";
+import { bookmarkToggleState } from "../atoms";
 
 const BookmarkDiv = styled(Div)`
   position: relative;
@@ -17,7 +18,7 @@ const variants = {
 };
 
 function BookmarkButton() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useRecoilState(bookmarkToggleState);
   const toggleButton = () => setIsOpen((isOpen) => !isOpen);
   return (
     <BookmarkDiv>
@@ -27,7 +28,7 @@ function BookmarkButton() {
         onClick={toggleButton}
         animate={isOpen ? "open" : "closed"}
       >
-        🧡
+        🤍
       </BookmarkToggleButton>
       <BookmarkToggleButton
         initial="close"
@@ -35,7 +36,7 @@ function BookmarkButton() {
         animate={isOpen ? "closed" : "open"}
         variants={variants}
       >
-        🤍
+        🧡
       </BookmarkToggleButton>
     </BookmarkDiv>
   );
