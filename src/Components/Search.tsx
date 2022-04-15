@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import MotionDiv, { MotionButton, MotionInput } from "../Styles/Motions";
 import { DivColumn, Form } from "../Styles/Tags";
 
@@ -7,6 +7,9 @@ const NAVER_SEARCH =
   "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=";
 
 const ERROR_MESSAGE_COUNTER = 3;
+interface IForm {
+  keyword: string;
+}
 
 function Search() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -18,9 +21,9 @@ function Search() {
     handleSubmit,
     reset,
     formState: { errors, submitCount },
-  } = useForm();
+  } = useForm<IForm>();
 
-  const searchKeyword = (data: any) => {
+  const searchKeyword: SubmitHandler<IForm> = (data) => {
     const { keyword } = data;
     window.open(`${NAVER_SEARCH}${keyword}`, "_blank");
     reset({ keyword: "" });
