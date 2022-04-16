@@ -19,6 +19,10 @@ export const MotionInput = styled(motion.input)`
   border: 3px solid ${(props) => props.theme.green.lighter};
 `;
 
-const MotionDiv = styled(motion.div)``;
+const MotionDiv = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default MotionDiv;

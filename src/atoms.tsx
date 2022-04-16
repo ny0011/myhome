@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 
 export interface IBookmark {
   id: number;
@@ -6,10 +6,17 @@ export interface IBookmark {
   link: string;
 }
 
-const DEFAULT_BOOKMARK = [{ id: 1, title: "꼬들", link: "https://kordle.kr/" }];
+const DEFAULT_BOOKMARK = [
+  { id: 1, title: "꼬들", link: "https://kordle.kr/" },
+  {
+    id: 2,
+    title: "우좜마",
+    link: "https://www.youtube.com/channel/UC2NFRq9s2neD_Ml0tPhNC2Q",
+  },
+];
 
 export const bookmarkState = atom<IBookmark[]>({
-  key: "bookmark",
+  key: "bookmarks",
   default: DEFAULT_BOOKMARK,
 });
 
