@@ -13,6 +13,11 @@ const DEFAULT_BOOKMARK = [
     title: "우좜마",
     link: "https://www.youtube.com/channel/UC2NFRq9s2neD_Ml0tPhNC2Q",
   },
+  {
+    id: 3,
+    title: "승빠일상",
+    link: "https://www.youtube.com/channel/UCs1R9zP6rH2GlTNHUI5SBkw",
+  },
 ];
 
 export const bookmarkState = atom<IBookmark[]>({

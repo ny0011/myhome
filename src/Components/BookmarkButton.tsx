@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Div from "../Styles/Tags";
 import { useRecoilState } from "recoil";
 import { bookmarkToggleState } from "../atoms";
+import { BookmarkIcon, BookmarkIconInverse } from "../Styles/Icons";
 
 const BookmarkDiv = styled(Div)`
   position: relative;
@@ -28,7 +29,7 @@ function BookmarkButton() {
         onClick={toggleButton}
         animate={isOpen ? "open" : "closed"}
       >
-        🤍
+        <BookmarkIconInverse />
       </BookmarkToggleButton>
       <BookmarkToggleButton
         initial="close"
@@ -36,7 +37,7 @@ function BookmarkButton() {
         animate={isOpen ? "closed" : "open"}
         variants={variants}
       >
-        🧡
+        <BookmarkIcon />
       </BookmarkToggleButton>
     </BookmarkDiv>
   );

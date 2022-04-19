@@ -4,11 +4,15 @@ import { motion } from "framer-motion";
 export const MotionButton = styled(motion.button)`
   padding: 5px 10px;
   font-size: 1.3em;
-  line-height: 1.5em;
   border-radius: 30% / 40%;
+  width: 50px;
+  height: 40px;
   border: none;
   cursor: pointer;
-  background-color: ${(props) => props.theme.white.darker};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.pink.lighter};
 `;
 
 export const MotionInput = styled(motion.input)`

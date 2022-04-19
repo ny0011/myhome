@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { CloseIcon, SearchIcon } from "../Styles/Icons";
 import MotionDiv, { MotionButton, MotionInput } from "../Styles/Motions";
 import { DivColumn, Form } from "../Styles/Tags";
 
@@ -49,7 +50,7 @@ function Search() {
               type="button"
               onClick={toggleSearchForm}
             >
-              ❌
+              <CloseIcon />
             </MotionButton>
           </Form>
           <DivColumn>
@@ -68,7 +69,7 @@ function Search() {
         </>
       ) : (
         <MotionButton layoutId="searchButton" onClick={toggleSearchForm}>
-          🔍
+          <SearchIcon />
         </MotionButton>
       )}
     </>

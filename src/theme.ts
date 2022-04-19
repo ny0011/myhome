@@ -18,4 +18,12 @@ export const theme: DefaultTheme = {
     lighter: "#6BCB77",
     darker: "#3CA169",
   },
+  navy: {
+    lighter: "#00416D",
+    darker: "#16213E",
+  },
+  pink: {
+    lighter: "#FFBBBB",
+    darker: "#FF8AAE",
+  },
 };

@@ -1,6 +1,6 @@
 import MotionDiv from "../Styles/Motions";
 import styled from "styled-components";
-import Div from "../Styles/Tags";
+import Div, { A } from "../Styles/Tags";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { bookmarkState, bookmarkToggleState } from "../atoms";
 
@@ -24,16 +24,16 @@ function BookmarkList() {
 
   return (
     <ListDiv
-      initial="open"
+      initial="closed"
       variants={variants}
       animate={isOpen ? "open" : "closed"}
     >
       {bookmarks.map((bookmark) => {
         return (
           <Item key={bookmark.id}>
-            <a href={bookmark.link} rel="noreferrer noopener" target="_blank">
+            <A href={bookmark.link} rel="noreferrer noopener" target="_blank">
               {bookmark.title}
-            </a>
+            </A>
           </Item>
         );
       })}
