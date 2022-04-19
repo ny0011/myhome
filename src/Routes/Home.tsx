@@ -4,7 +4,7 @@ import Search from "./Search";
 import { DivColumn } from "../Styles/Tags";
 
 const SearchDiv = styled(DivColumn)`
-  padding-top: 30px;
+  padding-top: 40px;
 `;
 
 function Home() {
