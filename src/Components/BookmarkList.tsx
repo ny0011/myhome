@@ -1,21 +1,21 @@
 import MotionDiv from "../Styles/Motions";
 import styled from "styled-components";
-import Div, { A } from "../Styles/Tags";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { bookmarkState, bookmarkToggleState } from "../atoms";
+import BookmarkItem from "./BookmarkItem";
 
 const ListDiv = styled(MotionDiv)`
   margin-top: 40px;
   flex-direction: column;
 `;
 
-const Item = styled(Div)`
-  margin-bottom: 20px;
-`;
-
-const variants = {
-  open: { opacity: 1, scale: 1 },
-  closed: { opacity: 0, scale: 0 },
+const listVariants = {
+  open: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+  },
+  closed: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
 };
 
 function BookmarkList() {
@@ -25,16 +25,16 @@ function BookmarkList() {
   return (
     <ListDiv
       initial="closed"
-      variants={variants}
+      variants={listVariants}
       animate={isOpen ? "open" : "closed"}
     >
       {bookmarks.map((bookmark) => {
         return (
-          <Item key={bookmark.id}>
-            <A href={bookmark.link} rel="noreferrer noopener" target="_blank">
-              {bookmark.title}
-            </A>
-          </Item>
+          <BookmarkItem
+            id={bookmark.id}
+            link={bookmark.link}
+            title={bookmark.title}
+          />
         );
       })}
     </ListDiv>
