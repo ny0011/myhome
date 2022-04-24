@@ -23,6 +23,7 @@ export const A = styled.a`
   cursor: pointer;
   padding: 3px;
   display: inline-block;
+  border: 1px solid transparent;
 
   &:link {
     color: ${(props) => props.theme.white.lighter};

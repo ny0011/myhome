@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { bookmarkState, bookmarkToggleState } from "../atoms";
 import BookmarkItem from "./BookmarkItem";
+import { AnimatePresence } from "framer-motion";
 
 const ListDiv = styled(MotionDiv)`
   margin-top: 40px;
@@ -23,21 +24,27 @@ function BookmarkList() {
   const isOpen = useRecoilValue(bookmarkToggleState);
 
   return (
-    <ListDiv
-      initial="closed"
-      variants={listVariants}
-      animate={isOpen ? "open" : "closed"}
-    >
-      {bookmarks.map((bookmark) => {
-        return (
-          <BookmarkItem
-            id={bookmark.id}
-            link={bookmark.link}
-            title={bookmark.title}
-          />
-        );
-      })}
-    </ListDiv>
+    <AnimatePresence initial={false}>
+      {isOpen && (
+        <ListDiv
+          initial="closed"
+          variants={listVariants}
+          animate="open"
+          exit="closed"
+        >
+          {bookmarks.map((bookmark) => {
+            return (
+              <BookmarkItem
+                id={bookmark.id}
+                link={bookmark.link}
+                title={bookmark.title}
+                key={bookmark.id}
+              />
+            );
+          })}
+        </ListDiv>
+      )}
+    </AnimatePresence>
   );
 }
 

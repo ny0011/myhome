@@ -5,7 +5,7 @@ function Bookmark() {
   return (
     <>
       <BookmarkButton />
-      <BookmarkList></BookmarkList>
+      <BookmarkList />
     </>
   );
 }

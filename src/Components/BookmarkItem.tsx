@@ -28,7 +28,6 @@ const itemVariants = {
 function BookmarkItem({ id, link, title }: IBookmark) {
   return (
     <Item
-      key={id}
       variants={itemVariants}
       whileHover={{ scale: 1.2 }}
       whileTap={{ scale: 0.8 }}

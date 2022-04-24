@@ -38,9 +38,10 @@ function Search() {
           <Form onSubmit={handleSubmit(searchKeyword)}>
             <MotionInput
               autoFocus
-              initial={{ scaleX: 0 }}
+              initial={{ scaleX: 0, x: 50 }}
               animate={{
                 scaleX: 1,
+                x: 0,
               }}
               {...register("keyword", { required: true })}
             ></MotionInput>

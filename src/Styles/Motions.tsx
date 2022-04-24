@@ -17,10 +17,10 @@ export const MotionButton = styled(motion.button)`
 
 export const MotionInput = styled(motion.input)`
   border-radius: 10px;
-  height: 1.8em;
   width: 140px;
   padding: 3px 5px;
   outline: none;
+  font-size: 1.2em;
   border: 3px solid ${(props) => props.theme.green.lighter};
 `;
 
