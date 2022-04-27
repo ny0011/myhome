@@ -29,3 +29,8 @@ export const bookmarkToggleState = atom({
   key: "bookmarkToggle",
   default: false,
 });
+
+export const bookmarkListAnimationState = atom({
+  key: "bookmarkListAnimation",
+  default: false,
+});

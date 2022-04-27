@@ -13,7 +13,7 @@ const itemVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 2000, velocity: -100 },
+      y: { stiffness: 1000, velocity: -50 },
     },
   },
   closed: {

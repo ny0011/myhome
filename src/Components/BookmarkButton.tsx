@@ -1,8 +1,8 @@
 import { MotionButton } from "../Styles/Motions";
 import styled from "styled-components";
 import Div from "../Styles/Tags";
-import { useRecoilState } from "recoil";
-import { bookmarkToggleState } from "../atoms";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { bookmarkListAnimationState, bookmarkToggleState } from "../atoms";
 import { BookmarkIcon, BookmarkIconInverse } from "../Styles/Icons";
 
 const BookmarkDiv = styled(Div)`
@@ -14,30 +14,32 @@ const BookmarkToggleButton = styled(MotionButton)`
 `;
 
 const variants = {
-  open: { opacity: 1, scale: 1 },
-  closed: { opacity: 0, scale: 0 },
+  rest: { scale: 1 },
+  pressed: { scale: 0.5 },
 };
 
 function BookmarkButton() {
   const [isOpen, setIsOpen] = useRecoilState(bookmarkToggleState);
-  const toggleButton = () => setIsOpen((isOpen) => !isOpen);
+  const [isAnimated, setIsAnimated] = useRecoilState(
+    bookmarkListAnimationState
+  );
+  const toggleButton = (e: any) => {
+    setIsAnimated(true);
+    setIsOpen((isOpen) => !isOpen);
+    setTimeout(() => {
+      setIsAnimated(false);
+    }, 800);
+  };
   return (
     <BookmarkDiv>
       <BookmarkToggleButton
-        initial="open"
         variants={variants}
+        initial="rest"
+        whileTap="pressed"
         onClick={toggleButton}
-        animate={isOpen ? "open" : "closed"}
+        disabled={isAnimated}
       >
-        <BookmarkIconInverse />
-      </BookmarkToggleButton>
-      <BookmarkToggleButton
-        initial="close"
-        onClick={toggleButton}
-        animate={isOpen ? "closed" : "open"}
-        variants={variants}
-      >
-        <BookmarkIcon />
+        {isOpen ? <BookmarkIconInverse /> : <BookmarkIcon />}
       </BookmarkToggleButton>
     </BookmarkDiv>
   );
