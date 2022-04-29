@@ -1,9 +1,8 @@
-import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
+import styled from "styled-components";
 import { searchToggleState } from "../atoms";
-import { CloseIcon, SearchIcon } from "../Styles/Icons";
-import MotionDiv, { MotionButton, MotionInput } from "../Styles/Motions";
+import MotionDiv, { MotionInput } from "../Styles/Motions";
 import { DivColumn, Form } from "../Styles/Tags";
 
 const NAVER_SEARCH =
@@ -13,6 +12,11 @@ const ERROR_MESSAGE_COUNTER = 3;
 interface IForm {
   keyword: string;
 }
+
+const ErrorMsg = styled(MotionDiv)`
+  position: absolute;
+  top: 5px;
+`;
 
 function SearchBar() {
   const [searchOpen, setSearchOpen] = useRecoilState(searchToggleState);
@@ -36,32 +40,33 @@ function SearchBar() {
   return (
     <>
       {searchOpen && (
-        <Form onSubmit={handleSubmit(searchKeyword)}>
-          <MotionInput
-            autoFocus
-            initial={{ scaleX: 0, x: 50 }}
-            animate={{
-              scaleX: 1,
-              x: 0,
-            }}
-            {...register("keyword", { required: true })}
-          ></MotionInput>
-        </Form>
+        <DivColumn>
+          <Form onSubmit={handleSubmit(searchKeyword)}>
+            <MotionInput
+              autoFocus
+              initial={{ scaleX: 0.1, x: 50 }}
+              animate={{
+                scaleX: 1,
+                x: 0,
+              }}
+              transition={{ type: "spring", stiffness: 100 }}
+              {...register("keyword", { required: true })}
+            ></MotionInput>
+          </Form>
+          {submitCount < ERROR_MESSAGE_COUNTER && errors.keyword && (
+            <ErrorMsg
+              style={{ marginTop: "10px", color: "white" }}
+              initial={{ opacity: 1 }}
+              animate={{ opacity: 0, display: "none" }}
+              transition={{
+                delay: 1,
+              }}
+            >
+              검색할 단어를 넣어줘!
+            </ErrorMsg>
+          )}
+        </DivColumn>
       )}
-
-      <DivColumn>
-        {submitCount < ERROR_MESSAGE_COUNTER && errors.keyword && (
-          <MotionDiv
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0, display: "none" }}
-            transition={{
-              delay: 1,
-            }}
-          >
-            검색할 단어를 넣어줘!
-          </MotionDiv>
-        )}
-      </DivColumn>
     </>
   );
 }

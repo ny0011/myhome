@@ -1,6 +1,6 @@
 import MotionDiv from "../Styles/Motions";
 import styled from "styled-components";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { bookmarkState, bookmarkToggleState } from "../atoms";
 import BookmarkItem from "./BookmarkItem";
 import { AnimatePresence } from "framer-motion";
@@ -20,7 +20,7 @@ const listVariants = {
 };
 
 function BookmarkList() {
-  const [bookmarks, setBookmarks] = useRecoilState(bookmarkState);
+  const bookmarks = useRecoilValue(bookmarkState);
   const isOpen = useRecoilValue(bookmarkToggleState);
 
   return (

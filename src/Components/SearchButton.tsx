@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { searchToggleState } from "../atoms";
 import { CloseIcon, SearchIcon } from "../Styles/Icons";
 import { MotionButton } from "../Styles/Motions";
-import { DivColumn, Form } from "../Styles/Tags";
 
 function SearchButton() {
   const [searchOpen, setSearchOpen] = useRecoilState(searchToggleState);

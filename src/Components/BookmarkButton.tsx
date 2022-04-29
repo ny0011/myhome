@@ -23,12 +23,12 @@ function BookmarkButton() {
   const [isAnimated, setIsAnimated] = useRecoilState(
     bookmarkListAnimationState
   );
-  const toggleButton = (e: any) => {
+  const toggleButton = () => {
     setIsAnimated(true);
     setIsOpen((isOpen) => !isOpen);
     setTimeout(() => {
       setIsAnimated(false);
-    }, 800);
+    }, 600);
   };
   return (
     <BookmarkDiv>
