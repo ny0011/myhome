@@ -1,7 +1,7 @@
 import { MotionButton } from "../Styles/Motions";
 import styled from "styled-components";
 import Div from "../Styles/Tags";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { bookmarkListAnimationState, bookmarkToggleState } from "../atoms";
 import { BookmarkIcon, BookmarkIconInverse } from "../Styles/Icons";
 

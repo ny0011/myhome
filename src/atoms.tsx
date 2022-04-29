@@ -1,5 +1,10 @@
 import { atom } from "recoil";
 
+export const searchToggleState = atom({
+  key: "searchToggle",
+  default: false,
+});
+
 export interface IBookmark {
   id: number;
   title: string;
