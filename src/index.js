@@ -13,8 +13,13 @@ const GlobalStyle = createGlobalStyle`
   font-weight: bold ;
   
 }
+html{
+  height: 100%;
+}
+
 body{
-  background-color: ${(props) => props.theme.navy.darker};
+  background: linear-gradient(${(props) => props.theme.navy.darker}, 80%,
+  ${(props) => props.theme.blue.lighter});
 }
 `;
 

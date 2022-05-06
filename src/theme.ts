@@ -26,4 +26,8 @@ export const theme: DefaultTheme = {
     lighter: "#FFBBBB",
     darker: "#FF8AAE",
   },
+  blue: {
+    lighter: "#4D96FF",
+    darker: "#2155CD",
+  },
 };
