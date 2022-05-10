@@ -40,9 +40,31 @@ const DEFAULT_BOOKMARK = [
   },
 ];
 
+const SaveBookmarks = (key: string, bookmarks: IBookmark[]) => {
+  localStorage.setItem(key, JSON.stringify(bookmarks));
+};
+
+const LoadBookmarks = (key: string) => {
+  return JSON.parse(
+    localStorage.hasOwnProperty(key)
+      ? (localStorage.getItem(key) as any)
+      : SaveBookmarks(key, DEFAULT_BOOKMARK)
+  );
+};
+
+const bookmarkEffects =
+  (key: string) =>
+  ({ setSelf, onSet }: any) => {
+    setSelf(LoadBookmarks(key));
+    onSet((newValue: IBookmark[]) => {
+      SaveBookmarks(key, newValue);
+    });
+  };
+
 export const bookmarkState = atom<IBookmark[]>({
   key: "bookmarks",
   default: DEFAULT_BOOKMARK,
+  effects_UNSTABLE: [bookmarkEffects("bookmarks")],
 });
 
 export const bookmarkToggleState = atom({
