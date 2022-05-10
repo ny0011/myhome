@@ -1,17 +1,29 @@
-import { FcLikePlaceholder, FcLike, FcSearch, FcCancel } from "react-icons/fc";
+import {
+  FcLikePlaceholder,
+  FcLike,
+  FcSearch,
+  FcCancel,
+  FcPlus,
+} from "react-icons/fc";
+
+const ICON_SIZE = 28;
 
 export const SearchIcon = () => {
-  return <FcSearch size={28} />;
+  return <FcSearch size={ICON_SIZE} />;
 };
 
 export const CloseIcon = () => {
-  return <FcCancel size={28} />;
+  return <FcCancel size={ICON_SIZE} />;
 };
 
 export const BookmarkIcon = () => {
-  return <FcLike size={28} />;
+  return <FcLike size={ICON_SIZE} />;
 };
 
 export const BookmarkIconInverse = () => {
-  return <FcLikePlaceholder size={28} />;
+  return <FcLikePlaceholder size={ICON_SIZE} />;
+};
+
+export const PlusIcon = () => {
+  return <FcPlus size={ICON_SIZE} />;
 };
