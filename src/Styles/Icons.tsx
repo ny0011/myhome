@@ -3,8 +3,9 @@ import {
   FcLike,
   FcSearch,
   FcCancel,
-  FcPlus,
 } from "react-icons/fc";
+
+import { FiEdit2, FiPlusCircle } from "react-icons/fi";
 
 const ICON_SIZE = 28;
 
@@ -25,5 +26,10 @@ export const BookmarkIconInverse = () => {
 };
 
 export const PlusIcon = () => {
-  return <FcPlus size={ICON_SIZE} />;
+  return <FiPlusCircle size={ICON_SIZE} />;
 };
+
+export const EditIcon = () => {
+  return <FiEdit2 size={ICON_SIZE} />;
+};
+
