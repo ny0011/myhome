@@ -36,4 +36,13 @@ export const A = styled.a`
   }
 `;
 
+export const Input = styled.input`
+  border-radius: 10px;
+  width: 140px;
+  padding: 3px 5px;
+  outline: none;
+  font-size: 1.2em;
+  border: 3px solid ${(props) => props.theme.blue.lighter};
+`;
+
 export default Div;
