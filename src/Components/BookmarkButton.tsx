@@ -36,7 +36,7 @@ function BookmarkButton() {
         variants={variants}
         initial="rest"
         whileTap="pressed"
-        onClick={toggleButton}
+        onTapStart={toggleButton}
         disabled={isAnimated}
       >
         {isOpen ? <BookmarkIconInverse /> : <BookmarkIcon />}
