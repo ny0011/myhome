@@ -1,8 +1,9 @@
 import MotionDiv from "../Styles/Motions";
 import styled from "styled-components";
 import Div, { A } from "../Styles/Tags";
-import { IBookmark } from "../atoms";
+import { bookmarkNumberState, IBookmark } from "../atoms";
 import { EditIcon, PlusIcon } from "../Styles/Icons";
+import { useSetRecoilState } from "recoil";
 
 const Item = styled(MotionDiv)`
   margin-bottom: 20px;
@@ -44,6 +45,11 @@ const itemVariants = {
 };
 
 function BookmarkItem({ id, link, title }: IBookmark) {
+  const setIsClicked = useSetRecoilState(bookmarkNumberState);
+  const onClick = () => {
+    setIsClicked(id);
+  };
+
   return (
     <>
       {title ? (
@@ -52,7 +58,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
             <A href={link} rel="noreferrer noopener" target="_blank">
               {title}
             </A>
-            <IconDiv>
+            <IconDiv onClick={onClick}>
               <EditIcon size={20} />
             </IconDiv>
           </ItemDiv>
@@ -63,7 +69,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
         >
-          <Plus>
+          <Plus onClick={onClick}>
             <PlusIcon />
           </Plus>
         </Item>

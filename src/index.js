@@ -13,8 +13,8 @@ const GlobalStyle = createGlobalStyle`
   font-weight: bold ;
   
 }
-html{
-  height: 100%;
+html, body{
+  min-height: 100vh;
 }
 
 body{

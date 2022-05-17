@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export const searchToggleState = atom({
   key: "searchToggle",
@@ -75,4 +75,19 @@ export const bookmarkToggleState = atom({
 export const bookmarkListAnimationState = atom({
   key: "bookmarkListAnimation",
   default: false,
+});
+
+export const bookmarkNumberState = atom({
+  key: "bookmarkNumber",
+  default: 0,
+});
+
+export const filterBookmark = selector({
+  key: "filterBookmark",
+  get: ({ get }) => {
+    const bookmarks = get(bookmarkState);
+    const number = get(bookmarkNumberState);
+
+    return bookmarks.filter((bookmark) => bookmark.id === number)[0];
+  },
 });
