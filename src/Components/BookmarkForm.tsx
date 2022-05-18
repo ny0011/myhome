@@ -49,7 +49,8 @@ function BookmarkForm({ number }: IProps) {
   const bookmark = useRecoilValue(filterBookmark);
   const title = bookmark ? bookmark.title : "";
   const link = bookmark ? bookmark.link : "";
-  console.log(bookmark);
+
+  const setBookmark = useSetRecoilState(bookmarkState);
   const {
     register,
     handleSubmit,
@@ -57,7 +58,6 @@ function BookmarkForm({ number }: IProps) {
     formState: { errors },
   } = useForm<IForm>();
 
-  const setBookmark = useSetRecoilState(bookmarkState);
   const searchKeyword: SubmitHandler<IForm> = (data) => {
     const { name, url } = data;
     setBookmark((bookmarks) => {

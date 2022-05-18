@@ -1,6 +1,6 @@
 import { FcLikePlaceholder, FcLike, FcSearch, FcCancel } from "react-icons/fc";
 
-import { FiEdit2, FiPlusCircle } from "react-icons/fi";
+import { FiEdit2, FiPlusCircle, FiX } from "react-icons/fi";
 
 const ICON_SIZE = 28;
 
@@ -30,4 +30,7 @@ export const PlusIcon = () => {
 
 export const EditIcon = ({ size }: IconProps) => {
   return <FiEdit2 size={size ? size : ICON_SIZE} color="white" />;
+};
+export const DeleteIcon = ({ size }: IconProps) => {
+  return <FiX size={size ? size : ICON_SIZE} color="white" />;
 };
