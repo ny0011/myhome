@@ -15,13 +15,13 @@ const DEFAULT_BOOKMARK = [
   { id: 1, title: "꼬들", link: "https://kordle.kr/" },
   {
     id: 2,
-    title: "우좜마",
-    link: "https://www.youtube.com/channel/UC2NFRq9s2neD_Ml0tPhNC2Q",
+    title: "워들",
+    link: "https://www.nytimes.com/games/wordle/index.html",
   },
   {
     id: 3,
-    title: "승빠일상",
-    link: "https://www.youtube.com/channel/UCs1R9zP6rH2GlTNHUI5SBkw",
+    title: "쿼들",
+    link: "https://www.quordle.com/#/",
   },
   {
     id: 4,
