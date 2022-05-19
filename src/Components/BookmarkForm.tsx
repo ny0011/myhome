@@ -1,10 +1,18 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import styled from "styled-components";
 import { bookmarkNumberState, bookmarkState, filterBookmark } from "../atoms";
+import {
+  BookmarkFormButton,
+  BookmarkFormCloseContainer,
+  BookmarkFormError,
+  BookmarkFormInput,
+  BookmarkFormOverlayBackground,
+  BookmarkFormOverlay,
+  BookmarkFormTitle,
+} from "../Styles/BookmarkUI";
 import { DeleteIcon } from "../Styles/Icons";
-import MotionDiv, { MotionInput } from "../Styles/Motions";
-import Div, { Form } from "../Styles/Tags";
+import MotionDiv from "../Styles/Motions";
+import { Form } from "../Styles/Tags";
 
 interface IForm {
   name: string;
@@ -14,69 +22,17 @@ interface IForm {
 interface IProps {
   number?: number;
 }
-
-const Overlay = styled(MotionDiv)`
-  align-items: normal;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-`;
-
-const overlay = {
+const overlayBackground = {
   hidden: { backgroundColor: "rgba(0, 0, 0, 0)" },
   visible: { backgroundColor: "rgba(0, 0, 0, 0.6)" },
   exit: { backgroundColor: "rgba(0, 0, 0, 0)" },
 };
 
-const OverlayBackground = styled(MotionDiv)`
-  top: 30px;
-  width: 300px;
-  height: 500px;
-  background-color: ${(props) => props.theme.white.lighter};
-  border-radius: 15px;
-  position: relative;
-`;
-
-const overlayBackground = {
+const overlay = {
   hidden: { scale: 1.2, opacity: 0 },
   visible: { scale: 1, opacity: 1 },
   exit: { scale: 1.2, opacity: 0 },
 };
-
-const FormButton = styled.button`
-  padding: 5px 10px;
-  font-size: 1.3em;
-  border-radius: 20% / 40%;
-  border: none;
-  cursor: pointer;
-  background-color: ${(props) => props.theme.pink.lighter};
-  width: 80px;
-`;
-
-const Title = styled(MotionDiv)`
-  font-size: 1.5em;
-`;
-const Error = styled(Div)`
-  font-size: 1em;
-  position: absolute;
-  top: -20px;
-`;
-
-const LinkInput = styled(MotionInput)`
-  margin: 20px 0px 25px 0px;
-  border: 3px solid ${(props) => props.theme.pink.lighter};
-`;
-
-const DeleteDiv = styled(MotionDiv)`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border-radius: 50%;
-  padding: 5px;
-  cursor: pointer;
-  background-color: ${(props) => props.theme.pink.lighter};
-`;
 
 function BookmarkForm({ number }: IProps) {
   const [isClicked, setIsClicked] = useRecoilState(bookmarkNumberState);
@@ -110,51 +66,56 @@ function BookmarkForm({ number }: IProps) {
   };
 
   return (
-    <Overlay variants={overlay} initial="hidden" animate="visible" exit="exit">
-      <OverlayBackground
-        variants={overlayBackground}
+    <BookmarkFormOverlayBackground
+      variants={overlayBackground}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <BookmarkFormOverlay
+        variants={overlay}
         initial="hidden"
         animate="visible"
         exit="exit"
         transition={{ type: "spring", stiffness: 60 }}
       >
-        <DeleteDiv
+        <BookmarkFormCloseContainer
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
           onClick={closeForm}
         >
           <DeleteIcon />
-        </DeleteDiv>
+        </BookmarkFormCloseContainer>
         <Form
           onSubmit={handleSubmit(searchKeyword)}
           style={{ flexDirection: "column" }}
         >
-          <Title>링크 이름</Title>
-          <LinkInput
+          <BookmarkFormTitle>링크 이름</BookmarkFormTitle>
+          <BookmarkFormInput
             defaultValue={title}
             {...register("name", { required: true, maxLength: 10 })}
-          ></LinkInput>
-          <Div style={{ position: "relative", width: "100%" }}>
+          ></BookmarkFormInput>
+          <BookmarkFormTitle style={{ position: "relative", width: "100%" }}>
             {isClicked && errors.name ? (
-              <Error>10자 이내로 적어주세요</Error>
+              <BookmarkFormError>10자 이내로 적어주세요</BookmarkFormError>
             ) : null}
-          </Div>
-          <Title>링크 주소</Title>
-          <LinkInput
+          </BookmarkFormTitle>
+          <BookmarkFormTitle>링크 주소</BookmarkFormTitle>
+          <BookmarkFormInput
             defaultValue={link}
             {...register("url", { required: true })}
-          ></LinkInput>
+          ></BookmarkFormInput>
 
           <MotionDiv
             style={{ marginTop: "20px" }}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.8 }}
           >
-            <FormButton type="submit">제출</FormButton>
+            <BookmarkFormButton type="submit">제출</BookmarkFormButton>
           </MotionDiv>
         </Form>
-      </OverlayBackground>
-    </Overlay>
+      </BookmarkFormOverlay>
+    </BookmarkFormOverlayBackground>
   );
 }
 

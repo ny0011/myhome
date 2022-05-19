@@ -1,17 +1,10 @@
-import { MotionButton } from "../Styles/Motions";
-import styled from "styled-components";
-import Div from "../Styles/Tags";
 import { useRecoilState } from "recoil";
 import { bookmarkListAnimationState, bookmarkToggleState } from "../atoms";
+import {
+  BookmarkButtonContainer,
+  BookmarkButtonToggle,
+} from "../Styles/BookmarkUI";
 import { BookmarkIcon, BookmarkIconInverse } from "../Styles/Icons";
-
-const BookmarkDiv = styled(Div)`
-  position: relative;
-`;
-
-const BookmarkToggleButton = styled(MotionButton)`
-  position: absolute;
-`;
 
 const variants = {
   rest: { scale: 1 },
@@ -31,8 +24,8 @@ function BookmarkButton() {
     }, 600);
   };
   return (
-    <BookmarkDiv>
-      <BookmarkToggleButton
+    <BookmarkButtonContainer>
+      <BookmarkButtonToggle
         variants={variants}
         initial="rest"
         whileTap="pressed"
@@ -40,8 +33,8 @@ function BookmarkButton() {
         disabled={isAnimated}
       >
         {isOpen ? <BookmarkIconInverse /> : <BookmarkIcon />}
-      </BookmarkToggleButton>
-    </BookmarkDiv>
+      </BookmarkButtonToggle>
+    </BookmarkButtonContainer>
   );
 }
 

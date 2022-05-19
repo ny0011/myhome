@@ -1,14 +1,8 @@
-import MotionDiv from "../Styles/Motions";
-import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { bookmarkState, bookmarkToggleState } from "../atoms";
 import BookmarkItem from "./BookmarkItem";
 import { AnimatePresence } from "framer-motion";
-
-const ListDiv = styled(MotionDiv)`
-  margin-top: 40px;
-  flex-direction: column;
-`;
+import { BookmarkListContainer } from "../Styles/BookmarkUI";
 
 const listVariants = {
   open: {
@@ -26,7 +20,7 @@ function BookmarkList() {
   return (
     <AnimatePresence initial={false}>
       {isOpen && (
-        <ListDiv
+        <BookmarkListContainer
           initial="closed"
           variants={listVariants}
           animate="open"
@@ -42,7 +36,7 @@ function BookmarkList() {
               />
             );
           })}
-        </ListDiv>
+        </BookmarkListContainer>
       )}
     </AnimatePresence>
   );
