@@ -77,7 +77,7 @@ export const BookmarkFormErrorContainer = styled(Div)`
 `;
 
 export const BookmarkFormError = styled(Div)`
-  font-size: 1em;
+  font-size: 0.8em;
   position: absolute;
   top: -20px;
 `;

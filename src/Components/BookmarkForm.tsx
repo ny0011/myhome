@@ -51,7 +51,6 @@ function BookmarkForm({ number }: IProps) {
     reset,
     formState: { errors },
   } = useForm<IForm>();
-  console.log(errors);
 
   const searchKeyword: SubmitHandler<IForm> = (data) => {
     const { name, url } = data;
@@ -105,9 +104,13 @@ function BookmarkForm({ number }: IProps) {
           <BookmarkFormTitle>링크 주소</BookmarkFormTitle>
           <BookmarkFormInput
             defaultValue={link}
-            {...register("url", { required: true })}
+            {...register("url", { required: true, pattern: /https?:\/\// })}
           ></BookmarkFormInput>
-
+          <BookmarkFormErrorContainer>
+            {errors.url && errors.url.type === "pattern" ? (
+              <BookmarkFormError>올바른 URL을 입력해주세요</BookmarkFormError>
+            ) : null}
+          </BookmarkFormErrorContainer>
           <MotionDiv
             style={{ marginTop: "20px" }}
             whileHover={{ scale: 1.2 }}
