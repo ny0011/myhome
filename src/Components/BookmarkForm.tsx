@@ -1,14 +1,15 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { bookmarkNumberState, bookmarkState, filterBookmark } from "../atoms";
 import {
   BookmarkFormButton,
   BookmarkFormCloseContainer,
   BookmarkFormError,
   BookmarkFormInput,
-  BookmarkFormOverlayBackground,
+  BookmarkFormContainer,
   BookmarkFormOverlay,
   BookmarkFormTitle,
+  BookmarkFormErrorContainer,
 } from "../Styles/BookmarkUI";
 import { DeleteIcon } from "../Styles/Icons";
 import MotionDiv from "../Styles/Motions";
@@ -22,7 +23,7 @@ interface IForm {
 interface IProps {
   number?: number;
 }
-const overlayBackground = {
+const background = {
   hidden: { backgroundColor: "rgba(0, 0, 0, 0)" },
   visible: { backgroundColor: "rgba(0, 0, 0, 0.6)" },
   exit: { backgroundColor: "rgba(0, 0, 0, 0)" },
@@ -35,7 +36,7 @@ const overlay = {
 };
 
 function BookmarkForm({ number }: IProps) {
-  const [isClicked, setIsClicked] = useRecoilState(bookmarkNumberState);
+  const setIsClicked = useSetRecoilState(bookmarkNumberState);
   const closeForm = () => {
     setIsClicked(0);
   };
@@ -50,6 +51,7 @@ function BookmarkForm({ number }: IProps) {
     reset,
     formState: { errors },
   } = useForm<IForm>();
+  console.log(errors);
 
   const searchKeyword: SubmitHandler<IForm> = (data) => {
     const { name, url } = data;
@@ -66,8 +68,8 @@ function BookmarkForm({ number }: IProps) {
   };
 
   return (
-    <BookmarkFormOverlayBackground
-      variants={overlayBackground}
+    <BookmarkFormContainer
+      variants={background}
       initial="hidden"
       animate="visible"
       exit="exit"
@@ -95,11 +97,11 @@ function BookmarkForm({ number }: IProps) {
             defaultValue={title}
             {...register("name", { required: true, maxLength: 10 })}
           ></BookmarkFormInput>
-          <BookmarkFormTitle style={{ position: "relative", width: "100%" }}>
-            {isClicked && errors.name ? (
+          <BookmarkFormErrorContainer>
+            {errors.name && errors.name.type === "maxLength" ? (
               <BookmarkFormError>10자 이내로 적어주세요</BookmarkFormError>
             ) : null}
-          </BookmarkFormTitle>
+          </BookmarkFormErrorContainer>
           <BookmarkFormTitle>링크 주소</BookmarkFormTitle>
           <BookmarkFormInput
             defaultValue={link}
@@ -115,7 +117,7 @@ function BookmarkForm({ number }: IProps) {
           </MotionDiv>
         </Form>
       </BookmarkFormOverlay>
-    </BookmarkFormOverlayBackground>
+    </BookmarkFormContainer>
   );
 }
 

@@ -40,7 +40,7 @@ export const BookmarkListContainer = styled(MotionDiv)`
   flex-direction: column;
 `;
 
-export const BookmarkFormOverlayBackground = styled(MotionDiv)`
+export const BookmarkFormContainer = styled(MotionDiv)`
   align-items: normal;
   width: 100%;
   height: 100%;
@@ -67,9 +67,15 @@ export const BookmarkFormButton = styled.button`
   width: 80px;
 `;
 
-export const BookmarkFormTitle = styled(MotionDiv)`
+export const BookmarkFormTitle = styled(Div)`
   font-size: 1.5em;
 `;
+
+export const BookmarkFormErrorContainer = styled(Div)`
+  position: relative;
+  width: 100%;
+`;
+
 export const BookmarkFormError = styled(Div)`
   font-size: 1em;
   position: absolute;
