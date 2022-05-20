@@ -85,6 +85,8 @@ export const BookmarkFormError = styled(Div)`
 export const BookmarkFormInput = styled(MotionInput)`
   margin: 20px 0px 25px 0px;
   border: 3px solid ${(props) => props.theme.pink.lighter};
+  background-color: transparent;
+  color: black;
 `;
 
 export const BookmarkFormCloseContainer = styled(MotionDiv)`

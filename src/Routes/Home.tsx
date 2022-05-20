@@ -5,7 +5,17 @@ import { DivColumn } from "../Styles/Tags";
 import Footer from "../Components/Footer";
 
 const SearchDiv = styled(DivColumn)`
+  align-items: flex-end;
+  padding-top: 20px;
+  padding-right: 15px;
+`;
+
+const BookmarkDiv = styled(DivColumn)`
   padding-top: 40px;
+`;
+
+const BodyDiv = styled.div`
+  flex-grow: 6;
 `;
 
 function Home() {
@@ -14,9 +24,10 @@ function Home() {
       <SearchDiv>
         <Search />
       </SearchDiv>
-      <SearchDiv>
+      <BookmarkDiv>
         <Bookmark />
-      </SearchDiv>
+      </BookmarkDiv>
+      <BodyDiv />
       <Footer />
     </>
   );

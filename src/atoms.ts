@@ -69,7 +69,7 @@ export const bookmarkState = atom<IBookmark[]>({
 
 export const bookmarkToggleState = atom({
   key: "bookmarkToggle",
-  default: false,
+  default: true,
 });
 
 export const bookmarkListAnimationState = atom({

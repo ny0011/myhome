@@ -12,16 +12,21 @@ export const MotionButton = styled(motion.button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.pink.lighter};
+  background-color: transparent;
+  &:hover {
+    background-color: ${(props) => props.theme.navy.lighter};
+  }
 `;
 
 export const MotionInput = styled(motion.input)`
   border-radius: 10px;
-  width: 140px;
-  padding: 3px 5px;
+  width: 60%;
+  padding: 3px 10px;
   outline: none;
   font-size: 1.2em;
-  border: 3px solid ${(props) => props.theme.green.lighter};
+  border: none;
+  background-color: ${(props) => props.theme.navy.lighter};
+  color: ${(props) => props.theme.white.lighter};
 `;
 
 const MotionDiv = styled(motion.div)`

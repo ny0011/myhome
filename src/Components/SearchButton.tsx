@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { searchToggleState } from "../atoms";
-import { CloseIcon, SearchIcon } from "../Styles/Icons";
-import { MotionButton } from "../Styles/Motions";
+import { DeleteIcon, SearchIcon } from "../Styles/Icons";
+import { SearchButtonIcon } from "../Styles/SearchUI";
 
 function SearchButton() {
   const [searchOpen, setSearchOpen] = useRecoilState(searchToggleState);
@@ -10,14 +10,13 @@ function SearchButton() {
   };
 
   return (
-    <MotionButton
-      animate={{ x: searchOpen ? 20 : 0 }}
+    <SearchButtonIcon
       layoutId="searchButton"
       type="button"
       onClick={toggleSearchForm}
     >
-      {searchOpen ? <CloseIcon /> : <SearchIcon />}
-    </MotionButton>
+      {searchOpen ? <DeleteIcon /> : <SearchIcon />}
+    </SearchButtonIcon>
   );
 }
 

@@ -13,8 +13,14 @@ const GlobalStyle = createGlobalStyle`
   font-weight: bold ;
   
 }
-html, body{
-  min-height: 100vh;
+html, body, #root{
+  height: 100%;
+  overflow: hidden;
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
 }
 
 body{

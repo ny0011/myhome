@@ -1,13 +1,13 @@
 import SearchBar from "../Components/SearchBar";
 import SearchButton from "../Components/SearchButton";
-import Div from "../Styles/Tags";
+import { SearchContainer } from "../Styles/SearchUI";
 
 function Search() {
   return (
-    <Div>
+    <SearchContainer>
       <SearchBar />
       <SearchButton />
-    </Div>
+    </SearchContainer>
   );
 }
 

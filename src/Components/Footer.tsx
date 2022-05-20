@@ -2,23 +2,26 @@ import styled from "styled-components";
 import Div, { A } from "../Styles/Tags";
 
 const FooterContainer = styled.footer`
-  position: absolute;
-  bottom: 30px;
+  flex-grow: 1;
+`;
+
+const Title = styled(Div)`
+  font-size: 0.8em;
 `;
 
 function Footer() {
   return (
-    <Div>
-      <FooterContainer>
+    <FooterContainer>
+      <Div>
         <A
           href="https://github.com/ny0011/myhome"
           rel="noreferrer noopener"
           target="_blank"
         >
-          @ny0011
+          <Title>@ny0011</Title>
         </A>
-      </FooterContainer>
-    </Div>
+      </Div>
+    </FooterContainer>
   );
 }
 
