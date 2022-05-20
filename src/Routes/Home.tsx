@@ -17,7 +17,7 @@ const BookmarkDiv = styled(DivColumn)`
 `;
 
 const BodyDiv = styled.div`
-  flex-grow: 4;
+  flex-grow: 6;
 `;
 
 function Home() {

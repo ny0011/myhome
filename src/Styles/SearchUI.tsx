@@ -15,10 +15,7 @@ export const SearchBarContainer = styled(DivColumn)`
   align-items: flex-end;
 `;
 
-export const SearchBarForm = styled(Form)`
-  justify-content: flex-end;
-  margin-right: 15px;
-`;
+export const SearchBarForm = styled(Form)``;
 
 export const SearchBarErrorMsg = styled(MotionDiv)`
   position: absolute;
