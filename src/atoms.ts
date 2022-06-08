@@ -2,7 +2,7 @@ import { atom, selector } from "recoil";
 
 export const searchToggleState = atom({
   key: "searchToggle",
-  default: false,
+  default: true,
 });
 
 export interface IBookmark {

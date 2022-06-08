@@ -1,6 +1,4 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRecoilState } from "recoil";
-import { searchToggleState } from "../atoms";
 import { MotionInput } from "../Styles/Motions";
 import {
   SearchBarContainer,
@@ -17,10 +15,6 @@ interface IForm {
 }
 
 function SearchBar() {
-  const [searchOpen, setSearchOpen] = useRecoilState(searchToggleState);
-  const toggleSearchForm = () => {
-    setSearchOpen((prev) => !prev);
-  };
   const {
     register,
     handleSubmit,
@@ -32,39 +26,28 @@ function SearchBar() {
     const { keyword } = data;
     window.open(`${NAVER_SEARCH}${keyword}`, "_blank");
     reset({ keyword: "" });
-    toggleSearchForm();
   };
 
   return (
-    <>
-      {searchOpen && (
-        <SearchBarContainer>
-          <SearchBarForm onSubmit={handleSubmit(searchKeyword)}>
-            <MotionInput
-              autoFocus
-              initial={{ scaleX: 0.1, x: 50 }}
-              animate={{
-                scaleX: 1,
-                x: 0,
-              }}
-              transition={{ type: "spring", stiffness: 100 }}
-              {...register("keyword", { required: true })}
-            ></MotionInput>
-          </SearchBarForm>
-          {submitCount < ERROR_MESSAGE_COUNTER && errors.keyword && (
-            <SearchBarErrorMsg
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 0, display: "none" }}
-              transition={{
-                delay: 1,
-              }}
-            >
-              검색할 단어를 넣어줘!
-            </SearchBarErrorMsg>
-          )}
-        </SearchBarContainer>
+    <SearchBarContainer>
+      <SearchBarForm onSubmit={handleSubmit(searchKeyword)}>
+        <MotionInput
+          placeholder="네이버 검색 꼬!"
+          {...register("keyword", { required: true })}
+        ></MotionInput>
+      </SearchBarForm>
+      {submitCount < ERROR_MESSAGE_COUNTER && errors.keyword && (
+        <SearchBarErrorMsg
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0, display: "none" }}
+          transition={{
+            delay: 1,
+          }}
+        >
+          검색할 단어를 넣어줘!
+        </SearchBarErrorMsg>
       )}
-    </>
+    </SearchBarContainer>
   );
 }
 
