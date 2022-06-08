@@ -1,4 +1,5 @@
 # myhome
+
 https://ny0011.github.io/myhome/
 
 0. 환경 설정
@@ -42,7 +43,7 @@ https://ny0011.github.io/myhome/
 - 전체 배경화면 남색 -> 하늘색 그라데이션
 - 다음 스텝을 위한 NestJS 스터디
 
-### 5/22 2nd check
+### 5/22 2nd check 발표 완료
 
 ---
 
@@ -51,6 +52,7 @@ https://ny0011.github.io/myhome/
 - 메모장 UI 만들기
   - todo 리스트를 만들까 하다가 그냥 3줄짜리 메모장 + 저장버튼을 만들면 되지 않을까? 싶음
 - 백엔드 구성해서 데이터를 cloud server를 사용해서 저장
+
   - 사용처
     - 로그인 구축
     - 사용자 별 북마크 데이터 저장
@@ -58,3 +60,16 @@ https://ny0011.github.io/myhome/
   - AWS는 무료 기간 지나서 NBP 요금 알아봐야함
   - vercel, netlify, heroku, firebase 알아보기
 
+- GCP
+  - 90일간 사용할 수 있는 $300 크레딧
+  - e2-standard-2
+  - cpu 2, mem 8g,
+  - 82,762.03 원(USD 65.87)
+- AWS
+  - t4g.large
+    - cpu 2, mem 8g, 50GB
+  - $42.42
+- NBP
+  - 10만원 할인 크레딧(3개월 유효기간)
+  - cpu 2, mem 8g, 50GB
+  - 85,120 원
