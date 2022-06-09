@@ -21,9 +21,8 @@ export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
   padding: 5px 0px;
   position: absolute;
   text-align: center;
-  animation: ${(props) => aroundCircle(props.rotatevalue)} 20s linear infinite;
-  transform: rotate(${(props) => props.rotatevalue}deg) translateY(${RADIUS}vh)
-    rotate(-${(props) => props.rotatevalue}deg);
+  animation: ${(props) => aroundCircle(props.rotatevalue)} 20s linear infinite
+    paused;
 `;
 export const BookmarkItemList = styled(Div)`
   position: relative;
@@ -51,6 +50,18 @@ export const BookmarkListContainer = styled(MotionDiv)`
   width: 50vw;
   flex-direction: column;
   position: relative;
+`;
+
+const aroundCircleBridge = (rotatevalue: number) => keyframes`
+  from {transform: rotate(${rotatevalue}deg) translateY(20px) rotate(calc(-${rotatevalue}deg ) ) }
+    to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translateY(20px) rotate(calc(-1turn - ${rotatevalue}deg ))  }
+`;
+
+export const BookmarkItemBridge = styled.hr<{ rotatevalue: number }>`
+  width: 20px;
+  position: absolute;
+  animation: ${(props) => aroundCircleBridge(props.rotatevalue)} 20s linear
+    infinite paused;
 `;
 
 export const BookmarkFormContainer = styled(MotionDiv)`

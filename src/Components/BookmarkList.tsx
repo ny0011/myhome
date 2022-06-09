@@ -15,7 +15,7 @@ function BookmarkList() {
             link={bookmark.link}
             title={bookmark.title}
             key={bookmark.id}
-          />
+          ></BookmarkItem>
         );
       })}
     </BookmarkListContainer>

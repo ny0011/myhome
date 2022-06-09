@@ -8,6 +8,7 @@ import {
 } from "../atoms";
 import { DeleteIcon, EditIcon, PlusIcon } from "../Styles/Icons";
 import {
+  BookmarkItemBridge,
   BookmarkItemContainer,
   BookmarkItemIcon,
   BookmarkItemIconList,
@@ -20,8 +21,8 @@ function BookmarkItem({ id, link, title }: IBookmark) {
   const handleEditClick = () => {
     setIsClicked(id);
   };
-  const length = useRecoilValue(lengthBookmark);
 
+  const length = useRecoilValue(lengthBookmark);
   const rotatevalue = (id - 1) * (360 / length);
 
   const setBookmark = useSetRecoilState(bookmarkState);
@@ -38,6 +39,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
 
   return (
     <>
+      <BookmarkItemBridge rotatevalue={rotatevalue} />
       {title ? (
         <BookmarkItemContainer rotatevalue={rotatevalue}>
           <BookmarkItemList>

@@ -45,6 +45,15 @@ https://ny0011.github.io/myhome/
 
 ### 5/22 2nd check 발표 완료
 
+6. 북마크 UI 수정
+   - 북마크 이름들이 관람차처럼 빙글빙글 도는 애니메이션 만들기
+   - 참고
+     - https://codepen.io/bhaveshgohel/pen/qBqELY
+   - 북마크 버튼 제외
+   - 북마크 item의 수정 삭제 버튼 위치 변경
+
+### 6/19 3rd check
+
 ---
 
 (가안)
