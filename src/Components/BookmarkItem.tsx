@@ -1,6 +1,11 @@
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { A } from "../Styles/Tags";
-import { bookmarkNumberState, bookmarkState, IBookmark } from "../atoms";
+import {
+  bookmarkNumberState,
+  bookmarkState,
+  IBookmark,
+  lengthBookmark,
+} from "../atoms";
 import { DeleteIcon, EditIcon, PlusIcon } from "../Styles/Icons";
 import {
   BookmarkItemContainer,
@@ -32,6 +37,9 @@ function BookmarkItem({ id, link, title }: IBookmark) {
   const handleEditClick = () => {
     setIsClicked(id);
   };
+  const length = useRecoilValue(lengthBookmark);
+
+  const rotatevalue = id * (360 / length);
 
   const setBookmark = useSetRecoilState(bookmarkState);
   const handleDeleteClick = () => {
@@ -48,7 +56,10 @@ function BookmarkItem({ id, link, title }: IBookmark) {
   return (
     <>
       {title ? (
-        <BookmarkItemContainer variants={itemVariants}>
+        <BookmarkItemContainer
+          rotatevalue={rotatevalue}
+          variants={itemVariants}
+        >
           <BookmarkItemList>
             <A href={link} rel="noreferrer noopener" target="_blank">
               {title}
@@ -65,6 +76,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
         </BookmarkItemContainer>
       ) : (
         <BookmarkItemContainer
+          rotatevalue={rotatevalue}
           variants={itemVariants}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}

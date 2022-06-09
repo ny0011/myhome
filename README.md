@@ -34,7 +34,7 @@ https://ny0011.github.io/myhome/
    - (아이디어)
      - 북마크 이름이 가운데에서 빙글빙글 도는 애니메이션 만들기
      - 참고
-       - https://codepen.io/hy16/pen/LYbEvjy
+       - https://codepen.io/bhaveshgohel/pen/qBqELY
        - https://davidlozzi.com/2021/01/19/animating-in-a-circular-fashion-with-css-and-reactjs/
      - 북마크 이름들 가운데에 달 띄워두기...?
      - 유튜브 채널 링크 북마크는 클릭할 때 아래쪽에 채널의 최신 영상 import

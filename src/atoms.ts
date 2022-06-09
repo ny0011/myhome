@@ -91,3 +91,11 @@ export const filterBookmark = selector({
     return bookmarks.filter((bookmark) => bookmark.id === number)[0];
   },
 });
+
+export const lengthBookmark = selector({
+  key: "lengthBookmark",
+  get: ({ get }) => {
+    const bookmarks = get(bookmarkState);
+    return bookmarks.length;
+  },
+});
