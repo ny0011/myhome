@@ -56,7 +56,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
         </BookmarkItemContainer>
       ) : (
         <BookmarkItemContainer rotatevalue={rotatevalue}>
-          <MotionDiv onClick={handleEditClick}>
+          <MotionDiv onClick={handleEditClick} style={{ cursor: "pointer" }}>
             <PlusIcon />
           </MotionDiv>
         </BookmarkItemContainer>

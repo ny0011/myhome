@@ -21,6 +21,7 @@ export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
   padding: 5px 0px;
   position: absolute;
   text-align: center;
+  animation: ${(props) => aroundCircle(props.rotatevalue)} 20s linear infinite;
   transform: rotate(${(props) => props.rotatevalue}deg) translateY(${RADIUS}vh)
     rotate(-${(props) => props.rotatevalue}deg);
 `;
@@ -41,6 +42,7 @@ export const BookmarkItemIcon = styled(Div)`
   height: 20px;
   border: 1px solid ${(props) => props.theme.white.lighter};
   &:hover {
+    cursor: pointer;
     background-color: ${(props) => props.theme.navy.lighter};
   }
 `;
