@@ -13,15 +13,16 @@ export const BookmarkButtonToggle = styled(MotionButton)`
 `;
 
 const aroundCircle = (rotatevalue: number) => keyframes`
-  from {transform: rotate(${rotatevalue}deg) translate(${RADIUS}vh) rotate(-${rotatevalue}deg)}
-    to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translate(${RADIUS}vh) rotate(calc(-1turn - ${rotatevalue}deg))  }
+  from {transform: rotate(${rotatevalue}deg) translateY(${RADIUS}vh) rotate(-${rotatevalue}deg)}
+    to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translateY(${RADIUS}vh) rotate(calc(-1turn - ${rotatevalue}deg))  }
 `;
 
 export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
   padding: 5px 0px;
   position: absolute;
   text-align: center;
-  animation: ${(props) => aroundCircle(props.rotatevalue)} 20s infinite linear;
+  transform: rotate(${(props) => props.rotatevalue}deg) translateY(${RADIUS}vh)
+    rotate(-${(props) => props.rotatevalue}deg);
 `;
 export const BookmarkItemList = styled(Div)`
   position: relative;

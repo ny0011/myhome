@@ -15,23 +15,6 @@ import {
 } from "../Styles/BookmarkUI";
 import MotionDiv from "../Styles/Motions";
 
-const itemVariants = {
-  open: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      y: { stiffness: 1000, velocity: -50 },
-    },
-  },
-  closed: {
-    y: 50,
-    opacity: 0,
-    transition: {
-      y: { stiffness: 1000 },
-    },
-  },
-};
-
 function BookmarkItem({ id, link, title }: IBookmark) {
   const setIsClicked = useSetRecoilState(bookmarkNumberState);
   const handleEditClick = () => {
@@ -39,7 +22,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
   };
   const length = useRecoilValue(lengthBookmark);
 
-  const rotatevalue = id * (360 / length);
+  const rotatevalue = (id - 1) * (360 / length);
 
   const setBookmark = useSetRecoilState(bookmarkState);
   const handleDeleteClick = () => {
@@ -56,10 +39,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
   return (
     <>
       {title ? (
-        <BookmarkItemContainer
-          rotatevalue={rotatevalue}
-          variants={itemVariants}
-        >
+        <BookmarkItemContainer rotatevalue={rotatevalue}>
           <BookmarkItemList>
             <A href={link} rel="noreferrer noopener" target="_blank">
               {title}
@@ -75,12 +55,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
           </BookmarkItemList>
         </BookmarkItemContainer>
       ) : (
-        <BookmarkItemContainer
-          rotatevalue={rotatevalue}
-          variants={itemVariants}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.8 }}
-        >
+        <BookmarkItemContainer rotatevalue={rotatevalue}>
           <MotionDiv onClick={handleEditClick}>
             <PlusIcon />
           </MotionDiv>
