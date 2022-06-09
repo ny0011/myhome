@@ -30,8 +30,7 @@ export const BookmarkItemList = styled(Div)`
 
 export const BookmarkItemIconList = styled(Div)`
   position: absolute;
-  top: -10px;
-  right: -60px;
+  bottom: -25px;
   width: 60px;
   display: flex;
   justify-content: space-evenly;

@@ -94,11 +94,11 @@ function BookmarkForm({ number }: IProps) {
           <BookmarkFormTitle>링크 이름</BookmarkFormTitle>
           <BookmarkFormInput
             defaultValue={title}
-            {...register("name", { required: true, maxLength: 10 })}
+            {...register("name", { required: true, maxLength: 6 })}
           ></BookmarkFormInput>
           <BookmarkFormErrorContainer>
             {errors.name && errors.name.type === "maxLength" ? (
-              <BookmarkFormError>10자 이내로 적어주세요</BookmarkFormError>
+              <BookmarkFormError>6자 이내로 적어주세요</BookmarkFormError>
             ) : null}
           </BookmarkFormErrorContainer>
           <BookmarkFormTitle>링크 주소</BookmarkFormTitle>
