@@ -48,11 +48,30 @@ https://ny0011.github.io/myhome/
 ---
 
 6. 북마크 UI 수정
+
    - 북마크 이름들이 관람차처럼 빙글빙글 도는 애니메이션 만들기
    - 참고
      - https://codepen.io/bhaveshgohel/pen/qBqELY
    - 북마크 버튼 제외
    - 북마크 item의 수정 삭제 버튼 위치 변경
+
+7. 북마크 중 유튜브 채널 링크일 때 기능 추가 -> 백엔드 필요?
+   - 채널 대표 이미지 삽입
+     - `#channel-header-container -> img #img 의 src`
+     - CSS
+       ```
+       width: 80px;
+       height: 80px;
+       border-radius: 50%;
+       overflow: hidden;
+       background-color: transparent;
+       ```
+   - 최신 동영상 확인하기 : `#items -> #dismissible`
+     - https://www.youtube.com/channel/{CHANNEL_ID["uzu"]}/videos?view=0&sort=dd&shelf_id=0
+     - 썸네일 이미지 : `a #thumbnail -> img #img의 src`
+     - 링크 id : `a #thumbnail의 href`
+     - 시간 : `#details -> # metadata-line -> span 2번째`
+   - CORS 이슈 : https://evan-moon.github.io/2020/05/21/about-cors/
 
 ### 6/19 3rd check
 
