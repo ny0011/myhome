@@ -2,7 +2,7 @@ import MotionDiv, { MotionButton, MotionInput } from "./Motions";
 import styled, { keyframes } from "styled-components";
 import Div from "./Tags";
 
-const RADIUS = 15;
+const RADIUS = "120px";
 
 export const BookmarkButtonContainer = styled(Div)`
   position: relative;
@@ -13,16 +13,15 @@ export const BookmarkButtonToggle = styled(MotionButton)`
 `;
 
 const aroundCircle = (rotatevalue: number) => keyframes`
-  from {transform: rotate(${rotatevalue}deg) translateY(${RADIUS}vh) rotate(-${rotatevalue}deg)}
-    to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translateY(${RADIUS}vh) rotate(calc(-1turn - ${rotatevalue}deg))  }
+  from {transform: rotate(${rotatevalue}deg) translateY(${RADIUS}) rotate(-${rotatevalue}deg)}
+    to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translateY(${RADIUS}) rotate(calc(-1turn - ${rotatevalue}deg))  }
 `;
 
 export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
   padding: 5px 0px;
   position: absolute;
   text-align: center;
-  animation: ${(props) => aroundCircle(props.rotatevalue)} 20s linear infinite
-    paused;
+  animation: ${(props) => aroundCircle(props.rotatevalue)} 20s linear infinite;
 `;
 export const BookmarkItemList = styled(Div)`
   position: relative;

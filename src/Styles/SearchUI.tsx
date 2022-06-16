@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import MotionDiv from "../Styles/Motions";
-import { DivColumn } from "./Tags";
+import { DivColumn, Input } from "./Tags";
 import { MotionButton } from "../Styles/Motions";
 import { Form } from "../Styles/Tags";
 
@@ -25,4 +25,12 @@ export const SearchBarErrorMsg = styled(MotionDiv)`
 
 export const SearchButtonIcon = styled(MotionButton)`
   margin-right: 20px;
+`;
+
+export const SearchBarInput = styled(Input)`
+  width: 60%;
+  padding: 3px 10px;
+  border: none;
+  background-color: ${(props) => props.theme.navy.lighter};
+  color: ${(props) => props.theme.white.lighter};
 `;

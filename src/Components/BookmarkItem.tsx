@@ -39,7 +39,6 @@ function BookmarkItem({ id, link, title }: IBookmark) {
 
   return (
     <>
-      <BookmarkItemBridge rotatevalue={rotatevalue} />
       {title ? (
         <BookmarkItemContainer rotatevalue={rotatevalue}>
           <BookmarkItemList>

@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { MotionInput } from "../Styles/Motions";
 import {
   SearchBarContainer,
   SearchBarErrorMsg,
   SearchBarForm,
+  SearchBarInput,
 } from "../Styles/SearchUI";
 
 const NAVER_SEARCH =
@@ -13,28 +14,34 @@ const ERROR_MESSAGE_COUNTER = 3;
 interface IForm {
   keyword: string;
 }
+const DEFAULT_KEYWORD = { keyword: "" };
 
 function SearchBar() {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, submitCount },
-  } = useForm<IForm>();
+    formState: { errors, submitCount, isSubmitSuccessful },
+  } = useForm<IForm>({ defaultValues: DEFAULT_KEYWORD });
 
   const searchKeyword: SubmitHandler<IForm> = (data) => {
     const { keyword } = data;
     window.open(`${NAVER_SEARCH}${keyword}`, "_blank");
-    reset({ keyword: "" });
   };
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset(DEFAULT_KEYWORD);
+    }
+  }, [reset, isSubmitSuccessful]);
 
   return (
     <SearchBarContainer>
       <SearchBarForm onSubmit={handleSubmit(searchKeyword)}>
-        <MotionInput
+        <SearchBarInput
           placeholder="네이버 검색 꼬!"
           {...register("keyword", { required: true })}
-        ></MotionInput>
+        ></SearchBarInput>
       </SearchBarForm>
       {submitCount < ERROR_MESSAGE_COUNTER && errors.keyword && (
         <SearchBarErrorMsg
