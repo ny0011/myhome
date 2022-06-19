@@ -61,7 +61,9 @@ https://ny0011.github.io/myhome/
 ### 6/19 3rd check 발표 완료
 - new idea
    - 새로운 영상이 있으면ㅋㅋㅋ 채널 이미지 눈에 불들어오깈ㅋㅋㅋㅋㅋㅋ 한쪽에만ㅋㅋㅋㅋㅋ 자전 무엇ㅋㅋㅋㅋ
-
+- react-youtube
+   - youtube api 사용
+   - https://www.npmjs.com/package/react-youtube
 ---
 
 
