@@ -5,6 +5,7 @@ import {
   bookmarkState,
   IBookmark,
   lengthBookmark,
+  isYoutuberLink,
 } from "../atoms";
 import { DeleteIcon, EditIcon, PlusIcon } from "../Styles/Icons";
 import {
@@ -15,9 +16,12 @@ import {
   BookmarkItemList,
 } from "../Styles/BookmarkUI";
 import MotionDiv from "../Styles/Motions";
+import Youtube from "./Youtube";
 
 function BookmarkItem({ id, link, title }: IBookmark) {
   const setIsClicked = useSetRecoilState(bookmarkNumberState);
+  const isYoutuber = useRecoilValue(isYoutuberLink(id));
+  console.log(isYoutuber);
   const handleEditClick = () => {
     setIsClicked(id);
   };
@@ -42,6 +46,7 @@ function BookmarkItem({ id, link, title }: IBookmark) {
       {title ? (
         <BookmarkItemContainer rotatevalue={rotatevalue}>
           <BookmarkItemList>
+            {isYoutuber ? <Youtube link={isYoutuber} /> : null}
             <A href={link} rel="noreferrer noopener" target="_blank">
               {title}
             </A>

@@ -59,17 +59,27 @@ https://ny0011.github.io/myhome/
    - https://github.com/ny0011/myhome-be
 
 ### 6/19 3rd check 발표 완료
+
 - new idea
-   - 새로운 영상이 있으면ㅋㅋㅋ 채널 이미지 눈에 불들어오깈ㅋㅋㅋㅋㅋㅋ 한쪽에만ㅋㅋㅋㅋㅋ 자전 무엇ㅋㅋㅋㅋ
+  - 새로운 영상이 있으면ㅋㅋㅋ 채널 이미지 눈에 불들어오깈ㅋㅋㅋㅋㅋㅋ 한쪽에만ㅋㅋㅋㅋㅋ 자전 무엇ㅋㅋㅋㅋ
 - react-youtube
-   - youtube api 사용
-   - https://www.npmjs.com/package/react-youtube
+  - youtube api 사용
+  - https://www.npmjs.com/package/react-youtube
+
 ---
 
+8. 미디어 쿼리를 사용해보자
 
+- 모바일 : 회전 회오리
+- 데스크탑 : 회전 ㄴㄴ, 원 반지름 2배
+
+9. react-youtube 사용해보기
+
+### 7/3 last check
+
+---
 
 (가안)
 
 - 메모장 UI 만들기
   - todo 리스트를 만들까 하다가 그냥 3줄짜리 메모장 + 저장버튼을 만들면 되지 않을까? 싶음
-

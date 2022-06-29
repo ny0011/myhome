@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { IconContext } from "react-icons";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Reset } from "styled-reset";
@@ -28,18 +29,20 @@ body{
   ${(props) => props.theme.blue.lighter});
 }
 `;
-
+const queryClient = new QueryClient();
 const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <ThemeProvider theme={theme}>
-        <IconContext.Provider value={{ style: { verticalAlign: "middle" } }}>
-          <Reset />
-          <GlobalStyle />
-          <App />
-        </IconContext.Provider>
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <IconContext.Provider value={{ style: { verticalAlign: "middle" } }}>
+            <Reset />
+            <GlobalStyle />
+            <App />
+          </IconContext.Provider>
+        </ThemeProvider>
+      </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>
 );

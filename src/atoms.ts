@@ -1,4 +1,4 @@
-import { atom, selector } from "recoil";
+import { atom, selector, selectorFamily } from "recoil";
 
 export const searchToggleState = atom({
   key: "searchToggle",
@@ -87,7 +87,6 @@ export const filterBookmark = selector({
   get: ({ get }) => {
     const bookmarks = get(bookmarkState);
     const number = get(bookmarkNumberState);
-
     return bookmarks.filter((bookmark) => bookmark.id === number)[0];
   },
 });
@@ -98,4 +97,22 @@ export const lengthBookmark = selector({
     const bookmarks = get(bookmarkState);
     return bookmarks.length;
   },
+});
+
+export const isYoutuberLink = selectorFamily({
+  key: "isYoutuberLink",
+  get:
+    (id: number) =>
+    ({ get }) => {
+      const bookmarks: IBookmark[] = get(bookmarkState);
+      const bookmark = bookmarks.filter((item) => item.id === id)[0];
+      if (bookmark) {
+        const data = bookmark.link.match("/www.youtube.com/channel/(.*)");
+        if (data === null) {
+          return false;
+        }
+        return data[1];
+      }
+      return false;
+    },
 });
