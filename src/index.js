@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { IconContext } from "react-icons";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Reset } from "styled-reset";
@@ -40,6 +41,7 @@ root.render(
             <Reset />
             <GlobalStyle />
             <App />
+            <ReactQueryDevtools initialIsOpen={true} />
           </IconContext.Provider>
         </ThemeProvider>
       </QueryClientProvider>

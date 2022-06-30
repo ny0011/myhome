@@ -9,7 +9,6 @@ import {
 } from "../atoms";
 import { DeleteIcon, EditIcon, PlusIcon } from "../Styles/Icons";
 import {
-  BookmarkItemBridge,
   BookmarkItemContainer,
   BookmarkItemIcon,
   BookmarkItemIconList,
@@ -21,7 +20,7 @@ import Youtube from "./Youtube";
 function BookmarkItem({ id, link, title }: IBookmark) {
   const setIsClicked = useSetRecoilState(bookmarkNumberState);
   const isYoutuber = useRecoilValue(isYoutuberLink(id));
-  console.log(isYoutuber);
+
   const handleEditClick = () => {
     setIsClicked(id);
   };

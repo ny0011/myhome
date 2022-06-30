@@ -4,26 +4,13 @@ const CHANNEL_API_LINK = `${YOUTUBE_LINK}/channels`;
 const PLAYLISTITEM_API_LINK = `${YOUTUBE_LINK}/playlistItems`;
 
 interface IThumbnails {
-  default: {
-    height: number;
-    url: string;
-    width: number;
-  };
+  height: number;
+  url: string;
+  width: number;
 }
-export interface IYoutuber {
+export interface IYoutuberInfo {
   thumbnails: IThumbnails;
   title: string;
-}
-export interface IChannelsList {
-  kind: string;
-  etag: string;
-  nextPageToken: string;
-  prevPageToken: string;
-  pageInfo: {
-    totalResults: number;
-    resultsPerPage: number;
-  };
-  items: any[];
 }
 export interface INewVideo {
   videoId: string;
@@ -38,9 +25,9 @@ export const getYoutubers = (link: string) => {
     .then((response) => {
       const { thumbnails, title } = response.items[0].snippet;
       const t = thumbnails?.default;
-      const youtuber: IYoutuber = {
+      const youtuber: IYoutuberInfo = {
         title,
-        thumbnails: { default: t },
+        thumbnails: t,
       };
       return youtuber;
     });

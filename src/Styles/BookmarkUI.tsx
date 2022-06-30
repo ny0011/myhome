@@ -1,6 +1,6 @@
 import MotionDiv, { MotionButton, MotionInput } from "./Motions";
 import styled, { keyframes } from "styled-components";
-import Div from "./Tags";
+import Div, { A } from "./Tags";
 
 const RADIUS = "120px";
 
@@ -25,6 +25,15 @@ export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
 `;
 export const BookmarkItemList = styled(Div)`
   position: relative;
+`;
+
+export const BookmarkItemYoutubeList = styled(A)`
+  position: absolute;
+  top: -20px;
+  font-size: 1em;
+  &.inactive {
+    display: none;
+  }
 `;
 
 export const BookmarkItemIconList = styled(Div)`
