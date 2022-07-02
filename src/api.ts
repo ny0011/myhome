@@ -52,7 +52,6 @@ export const getNewVideos = (link: string) => {
   )
     .then((response) => response.json())
     .then((response) => {
-      //const { videoId, videoPublishedAt } = response.items[0].contentDetails;
       const {
         thumbnails: { medium: thumbnail },
         resourceId: { videoId },

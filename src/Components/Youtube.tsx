@@ -12,7 +12,6 @@ interface Iprops {
 const queryOptions = { refetchOnWindowFocus: false, keepPreviousData: true };
 
 function Youtube({ link }: Iprops) {
-  //const [isUpdatedOneDay, setIsUpdatedOneDay] = useState(true);
   const [isActive, setActive] = useState(true);
   const setNewVideoState = useSetRecoilState(newVideoState);
 
