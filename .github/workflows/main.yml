@@ -23,8 +23,7 @@ jobs:
         
       - name: install npm
         run: |
-          npm --version 
-          node --version
+          npm install
 
       - name: build and deploy
         run: |
