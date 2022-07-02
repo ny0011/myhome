@@ -21,8 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name:
-
       - name: build
         run: |
           npm install
