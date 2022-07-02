@@ -21,12 +21,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo "REACT_APP_YOUTUBE_API_KEY=$REACT_APP_YOUTUBE_API_KEY" >> .env
+          cat .env
+        env:
+          REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
+
       - name: build
         run: |
           npm install
           npm run build
-        env:
-          REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
 
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
