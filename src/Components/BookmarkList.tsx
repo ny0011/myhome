@@ -1,7 +1,11 @@
 import { useRecoilValue } from "recoil";
 import { bookmarkState, newVideoState } from "../atoms";
 import BookmarkItem from "./BookmarkItem";
-import { BookmarkListContainer } from "../Styles/BookmarkUI";
+import {
+  BookmarkListContainer,
+  BookmarkThumbnailContainer,
+  BookmarkThumbnailImg,
+} from "../Styles/BookmarkUI";
 import { theme } from "../theme";
 import { useEffect, useState } from "react";
 
@@ -35,17 +39,11 @@ function BookmarkList() {
   const newvideo = useRecoilValue(newVideoState);
   const { height, width } = useWindowDimensions();
   const tablet = parseInt(theme.device.tablet.split(" ")[3].split("px")[0]);
+  const mobile = parseInt(theme.device.mobile.split(" ")[3].split("px")[0]);
+  console.log(mobile);
 
   return (
     <BookmarkListContainer>
-      {newvideo.title && width > tablet ? (
-        <img
-          src={newvideo.thumbnail.url}
-          height={newvideo.thumbnail.height}
-          width={newvideo.thumbnail.width}
-          alt="newvideo thumbnail"
-        />
-      ) : null}
       {bookmarks.map((bookmark) => {
         return (
           <BookmarkItem
@@ -56,6 +54,18 @@ function BookmarkList() {
           ></BookmarkItem>
         );
       })}
+      {newvideo.title && (width > tablet || width < mobile) ? (
+        <BookmarkThumbnailContainer>
+          <a href={newvideo.videoId}>
+            <BookmarkThumbnailImg
+              src={newvideo.thumbnail.url}
+              height={newvideo.thumbnail.height}
+              width={newvideo.thumbnail.width}
+              alt="newvideo thumbnail"
+            />
+          </a>
+        </BookmarkThumbnailContainer>
+      ) : null}
     </BookmarkListContainer>
   );
 }

@@ -112,7 +112,7 @@ export const isYoutuberLink = selectorFamily({
       const bookmarks: IBookmark[] = get(bookmarkState);
       const bookmark = bookmarks.filter((item) => item.id === id)[0];
       if (bookmark) {
-        const data = bookmark.link.match("/www.youtube.com/channel/(.*)");
+        const data = bookmark.link.match("/.*youtube.com/channel/(.*)");
         if (data === null) {
           return false;
         }
@@ -133,38 +133,3 @@ export const newVideoState = atom<INewVideo>({
   key: "newVideo",
   default: DEFAULT_NEWVIDEO,
 });
-
-/*
-
-
-const DEFAULT_YOUTUBER: IYoutuber[] = [];
-
-
-
-const SaveYoutubers = (key: string, youtuber: IYoutuber[]) => {
-  localStorage.setItem(key, JSON.stringify(youtuber));
-};
-
-const LoadYoutubers = (key: string) => {
-  return JSON.parse(
-    localStorage.hasOwnProperty(key)
-      ? (localStorage.getItem(key) as any)
-      : SaveYoutubers(key, DEFAULT_YOUTUBER)
-  );
-};
-
-const youtuberEffects =
-  (key: string) =>
-  ({ setSelf, onSet }: any) => {
-    setSelf(LoadYoutubers(key));
-    onSet((newValue: IYoutuber[]) => {
-      SaveYoutubers(key, newValue);
-    });
-  };
-
-export const youtuberState = atom<IYoutuber[]>({
-  key: "youtuber",
-  default: DEFAULT_YOUTUBER,
-  effects_UNSTABLE: [youtuberEffects("youtuber")],
-});
-*/

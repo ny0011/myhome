@@ -17,10 +17,12 @@ const aroundCircle = (rotatevalue: number, radius: number) => keyframes`
     to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translateY(${radius}px) rotate(calc(-1turn - ${rotatevalue}deg))  }
 `;
 
-export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
+export const BookmarkItemContainer = styled(Div)<{ rotatevalue: number }>`
   @media ${({ theme }) => theme.device.mobile} {
     position: initial;
     animation: none !important;
+    width: 200px;
+    height: 65px;
   }
 
   @media ${({ theme }) => theme.device.tablet} {
@@ -28,8 +30,8 @@ export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
       linear infinite;
   }
 
-  width: 195px;
-  height: 72px;
+  width: 160px;
+  height: 90px;
   position: absolute;
   text-align: center;
   animation: ${(props) => aroundCircle(props.rotatevalue, RADIUS * 5)} 40s
@@ -72,26 +74,14 @@ export const BookmarkItemIcon = styled(Div)`
     background-color: ${(props) => props.theme.navy.lighter};
   }
 `;
-export const BookmarkListContainer = styled(MotionDiv)`
+export const BookmarkListContainer = styled(Div)`
   @media ${({ theme }) => theme.device.mobile} {
-    height: 60vh;
+    height: 450px;
   }
   height: 70vh;
   width: 50vw;
   flex-direction: column;
   position: relative;
-`;
-
-const aroundCircleBridge = (rotatevalue: number) => keyframes`
-  from {transform: rotate(${rotatevalue}deg) translateY(20px) rotate(calc(-${rotatevalue}deg ) ) }
-    to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translateY(20px) rotate(calc(-1turn - ${rotatevalue}deg ))  }
-`;
-
-export const BookmarkItemBridge = styled.hr<{ rotatevalue: number }>`
-  width: 20px;
-  position: absolute;
-  animation: ${(props) => aroundCircleBridge(props.rotatevalue)} 20s linear
-    infinite paused;
 `;
 
 export const BookmarkFormContainer = styled(MotionDiv)`
@@ -151,4 +141,14 @@ export const BookmarkFormCloseContainer = styled(MotionDiv)`
   padding: 5px;
   cursor: pointer;
   background-color: ${(props) => props.theme.pink.lighter};
+`;
+
+export const BookmarkThumbnailImg = styled.img`
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 120px;
+    height: 90px;
+  }
+`;
+export const BookmarkThumbnailContainer = styled.div`
+  margin-top: 10px;
 `;
