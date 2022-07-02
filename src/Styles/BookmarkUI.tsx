@@ -2,7 +2,8 @@ import MotionDiv, { MotionButton, MotionInput } from "./Motions";
 import styled, { keyframes } from "styled-components";
 import Div, { A } from "./Tags";
 
-const RADIUS = "120px";
+const RADIUS = 60;
+const RADIUS_TABLET = "240px";
 
 export const BookmarkButtonContainer = styled(Div)`
   position: relative;
@@ -12,22 +13,38 @@ export const BookmarkButtonToggle = styled(MotionButton)`
   position: absolute;
 `;
 
-const aroundCircle = (rotatevalue: number) => keyframes`
-  from {transform: rotate(${rotatevalue}deg) translateY(${RADIUS}) rotate(-${rotatevalue}deg)}
-    to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translateY(${RADIUS}) rotate(calc(-1turn - ${rotatevalue}deg))  }
+const aroundCircle = (rotatevalue: number, radius: number) => keyframes`
+  from {transform: rotate(${rotatevalue}deg) translateY(${radius}px) rotate(-${rotatevalue}deg)}
+    to {transform: rotate(calc(1turn + ${rotatevalue}deg)) translateY(${radius}px) rotate(calc(-1turn - ${rotatevalue}deg))  }
 `;
 
 export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
-  padding: 5px 0px;
+  @media ${({ theme }) => theme.device.mobile} {
+    position: initial;
+    animation: none !important;
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    animation: ${(props) => aroundCircle(props.rotatevalue, RADIUS * 2)} 20s
+      linear infinite;
+  }
+
+  width: 195px;
+  height: 72px;
   position: absolute;
   text-align: center;
-  animation: ${(props) => aroundCircle(props.rotatevalue)} 20s linear infinite;
+  animation: ${(props) => aroundCircle(props.rotatevalue, RADIUS * 4)} 40s
+    linear infinite;
 `;
 export const BookmarkItemList = styled(Div)`
   position: relative;
 `;
 
 export const BookmarkItemYoutubeList = styled(A)`
+  @media ${({ theme }) => theme.device.mobile} {
+    position: initial;
+    font-size: 1.2em;
+  }
   position: absolute;
   top: -20px;
   font-size: 1em;
@@ -37,6 +54,9 @@ export const BookmarkItemYoutubeList = styled(A)`
 `;
 
 export const BookmarkItemIconList = styled(Div)`
+  @media ${({ theme }) => theme.device.mobile} {
+    position: initial;
+  }
   position: absolute;
   bottom: -25px;
   width: 60px;
@@ -54,7 +74,10 @@ export const BookmarkItemIcon = styled(Div)`
   }
 `;
 export const BookmarkListContainer = styled(MotionDiv)`
-  height: 50vh;
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 60vh;
+  }
+  height: 70vh;
   width: 50vw;
   flex-direction: column;
   position: relative;

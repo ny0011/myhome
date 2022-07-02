@@ -31,5 +31,9 @@ declare module "styled-components" {
       darker: string;
       lighter: string;
     };
+    device: {
+      mobile: string;
+      tablet: string;
+    };
   }
 }

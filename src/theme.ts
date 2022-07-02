@@ -1,5 +1,15 @@
 import { DefaultTheme } from "styled-components";
 
+const deviceSizes = {
+  mobile: "415px",
+  tablet: "767px",
+};
+
+const device = {
+  mobile: `screen and (max-width: ${deviceSizes.mobile})`,
+  tablet: `screen and (max-width: ${deviceSizes.tablet})`,
+};
+
 export const theme: DefaultTheme = {
   red: {
     lighter: "#FF6B6B",
@@ -30,4 +40,5 @@ export const theme: DefaultTheme = {
     lighter: "#4D96FF",
     darker: "#2155CD",
   },
+  device,
 };
