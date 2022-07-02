@@ -24,7 +24,6 @@ jobs:
       - name: Generate Environment Variables File for Production
         run: |
           echo "REACT_APP_YOUTUBE_API_KEY=$REACT_APP_YOUTUBE_API_KEY" >> .env
-          cat .env
         env:
           REACT_APP_YOUTUBE_API_KEY: ${{ secrets.REACT_APP_YOUTUBE_API_KEY }}
 
