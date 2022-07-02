@@ -3,18 +3,20 @@ const YOUTUBE_LINK = "https://www.googleapis.com/youtube/v3";
 const CHANNEL_API_LINK = `${YOUTUBE_LINK}/channels`;
 const PLAYLISTITEM_API_LINK = `${YOUTUBE_LINK}/playlistItems`;
 
-interface IThumbnails {
+interface IThumbnail {
   height: number;
   url: string;
   width: number;
 }
 export interface IYoutuberInfo {
-  thumbnails: IThumbnails;
+  thumbnails: IThumbnail;
   title: string;
 }
 export interface INewVideo {
   videoId: string;
   videoPublishedAt: string;
+  thumbnail: IThumbnail;
+  title: string;
 }
 
 export const getYoutubers = (link: string) => {
@@ -46,12 +48,18 @@ export const getUploadLink = (link: string) => {
 
 export const getNewVideos = (link: string) => {
   return fetch(
-    `${PLAYLISTITEM_API_LINK}/?part=contentDetails&playlistId=${link}&key=${YOUTUBE_API_KEY}&maxResults=1`
+    `${PLAYLISTITEM_API_LINK}/?part=snippet&playlistId=${link}&key=${YOUTUBE_API_KEY}&maxResults=1`
   )
     .then((response) => response.json())
     .then((response) => {
-      const { videoId, videoPublishedAt } = response.items[0].contentDetails;
+      //const { videoId, videoPublishedAt } = response.items[0].contentDetails;
+      const {
+        thumbnails: { medium: thumbnail },
+        resourceId: { videoId },
+        publishedAt: videoPublishedAt,
+        title,
+      } = response.items[0].snippet;
 
-      return { videoId, videoPublishedAt };
+      return { videoId, videoPublishedAt, thumbnail, title };
     });
 };

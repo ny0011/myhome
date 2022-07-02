@@ -1,5 +1,5 @@
 import { atom, selector, selectorFamily } from "recoil";
-import { IYoutuberInfo } from "./api";
+import { INewVideo, IYoutuberInfo } from "./api";
 
 export const searchToggleState = atom({
   key: "searchToggle",
@@ -99,15 +99,11 @@ export const lengthBookmark = selector({
     return bookmarks.length;
   },
 });
-
 export interface IYoutuber {
   bookmarkid: number;
   cid: string;
   info: IYoutuberInfo;
 }
-
-const DEFAULT_YOUTUBER: IYoutuber[] = [];
-
 export const isYoutuberLink = selectorFamily({
   key: "isYoutuberLink",
   get:
@@ -125,6 +121,25 @@ export const isYoutuberLink = selectorFamily({
       return false;
     },
 });
+
+const DEFAULT_NEWVIDEO: INewVideo = {
+  videoId: "",
+  videoPublishedAt: "",
+  thumbnail: { height: 320, url: "", width: 180 },
+  title: "",
+};
+
+export const newVideoState = atom<INewVideo>({
+  key: "newVideo",
+  default: DEFAULT_NEWVIDEO,
+});
+
+/*
+
+
+const DEFAULT_YOUTUBER: IYoutuber[] = [];
+
+
 
 const SaveYoutubers = (key: string, youtuber: IYoutuber[]) => {
   localStorage.setItem(key, JSON.stringify(youtuber));
@@ -152,3 +167,4 @@ export const youtuberState = atom<IYoutuber[]>({
   default: DEFAULT_YOUTUBER,
   effects_UNSTABLE: [youtuberEffects("youtuber")],
 });
+*/

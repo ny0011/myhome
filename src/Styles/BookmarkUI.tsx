@@ -33,8 +33,8 @@ export const BookmarkItemContainer = styled(MotionDiv)<{ rotatevalue: number }>`
   height: 72px;
   position: absolute;
   text-align: center;
-  animation: ${(props) => aroundCircle(props.rotatevalue, RADIUS * 4)} 40s
-    linear infinite;
+  animation: ${(props) => aroundCircle(props.rotatevalue, RADIUS * 5)} 40s
+    linear infinite paused;
 `;
 export const BookmarkItemList = styled(Div)`
   position: relative;

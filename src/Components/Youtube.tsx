@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useQuery, useQueryClient } from "react-query";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { getNewVideos, INewVideo, getUploadLink } from "../api";
-import { youtuberState } from "../atoms";
+import { newVideoState } from "../atoms";
 import { BookmarkItemYoutubeList } from "../Styles/BookmarkUI";
 
 interface Iprops {
@@ -22,6 +22,8 @@ const queryOptions = { refetchOnWindowFocus: false, keepPreviousData: true };
 function Youtube({ link }: Iprops) {
   //const [isUpdatedOneDay, setIsUpdatedOneDay] = useState(true);
   const [isActive, setActive] = useState(true);
+  const setNewVideoState = useSetRecoilState(newVideoState);
+
   const fetchWithPrevious = async (link: string, previous: any) => {
     const uploadLink = await getUploadLink(link);
     const newvideo = await getNewVideos(uploadLink);
@@ -46,12 +48,16 @@ function Youtube({ link }: Iprops) {
     );
   };
 
-  const { data: newvideo, isLoading, isFetched } = useYoutubers();
-  console.log(newvideo, isFetched);
+  const { data: newvideo, isLoading } = useYoutubers();
   const url = `https://www.youtube.com/watch?v=${newvideo?.videoId}`;
 
   const handleClick = () => {
     setActive(!isActive);
+  };
+
+  const handleMouseOver = () => {
+    if (!newvideo) return;
+    setNewVideoState(newvideo);
   };
 
   return (
@@ -61,6 +67,7 @@ function Youtube({ link }: Iprops) {
       ) : (
         <BookmarkItemYoutubeList
           className={isActive ? undefined : "inactive"}
+          onMouseOver={handleMouseOver}
           onClick={handleClick}
           href={url}
           rel="noreferrer noopener"
