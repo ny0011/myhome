@@ -17,44 +17,36 @@ const HOUR = 1000 * 60 * 60;
 const HALF_DAY = HOUR * 12;
 const DAY = HALF_DAY * 2;
 
-const fetchWithPrevious = async (link: string, previous: any) => {
-  const uploadLink = await getUploadLink(link);
-  const newvideo = await getNewVideos(uploadLink);
-  if (previous === undefined) return newvideo;
-  if (previous?.current === undefined)
-    return { previous: previous, current: newvideo };
-  return { previous: previous.current, current: newvideo };
-};
-
 const queryOptions = { refetchOnWindowFocus: false, keepPreviousData: true };
 
 function Youtube({ link }: Iprops) {
   //const [isUpdatedOneDay, setIsUpdatedOneDay] = useState(true);
-  const [isActive, setActive] = useState(false);
-
+  const [isActive, setActive] = useState(true);
+  const fetchWithPrevious = async (link: string, previous: any) => {
+    const uploadLink = await getUploadLink(link);
+    const newvideo = await getNewVideos(uploadLink);
+    if (previous === undefined) return newvideo;
+    if (previous.videoId === newvideo.videoId && !isActive) {
+      setActive(false);
+    } else {
+      setActive(true);
+    }
+    return newvideo;
+  };
   const useYoutubers = () => {
     const queryClient = useQueryClient();
-    const previous = queryClient.getQueryData<INewVideo | ResultWithPrevious>([
+    const previous = queryClient.getQueryData<INewVideo>([
       "youtuber_newvideo",
       link,
     ]);
-    return useQuery(["youtuber_newvideo", link], () =>
-      fetchWithPrevious(link, previous)
+    return useQuery(
+      ["youtuber_newvideo", link],
+      () => fetchWithPrevious(link, previous),
+      queryOptions
     );
   };
 
-  const {
-    data: newvideo,
-    isLoading,
-    isFetched,
-  } = useQuery<INewVideo>(
-    ["youtuber_newvideo", link],
-    async () => {
-      const uploadLink = await getUploadLink(link);
-      return await getNewVideos(uploadLink);
-    },
-    { refetchOnWindowFocus: false, keepPreviousData: true }
-  );
+  const { data: newvideo, isLoading, isFetched } = useYoutubers();
   console.log(newvideo, isFetched);
   const url = `https://www.youtube.com/watch?v=${newvideo?.videoId}`;
 
