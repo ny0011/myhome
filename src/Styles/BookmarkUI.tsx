@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components";
 import Div, { A } from "./Tags";
 
 const RADIUS = 60;
-const RADIUS_TABLET = "240px";
 
 export const BookmarkButtonContainer = styled(Div)`
   position: relative;
