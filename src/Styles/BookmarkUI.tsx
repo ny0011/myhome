@@ -76,7 +76,8 @@ export const BookmarkItemIcon = styled(Div)`
 `;
 export const BookmarkListContainer = styled(Div)`
   @media ${({ theme }) => theme.device.mobile} {
-    height: 450px;
+    height: 491px;
+    justify-content: flex-start;
   }
   height: 70vh;
   width: 50vw;

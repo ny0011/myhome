@@ -40,7 +40,7 @@ function BookmarkList() {
   const { height, width } = useWindowDimensions();
   const tablet = parseInt(theme.device.tablet.split(" ")[3].split("px")[0]);
   const mobile = parseInt(theme.device.mobile.split(" ")[3].split("px")[0]);
-  console.log(mobile);
+  const videourl = `https://www.youtube.com/watch?v=${newvideo.videoId}`;
 
   return (
     <BookmarkListContainer>
@@ -56,7 +56,7 @@ function BookmarkList() {
       })}
       {newvideo.title && (width > tablet || width < mobile) ? (
         <BookmarkThumbnailContainer>
-          <a href={newvideo.videoId}>
+          <a href={videourl}>
             <BookmarkThumbnailImg
               src={newvideo.thumbnail.url}
               height={newvideo.thumbnail.height}
@@ -71,3 +71,4 @@ function BookmarkList() {
 }
 
 export default BookmarkList;
+//

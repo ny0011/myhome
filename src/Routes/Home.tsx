@@ -13,7 +13,6 @@ const SearchDiv = styled(DivColumn)`
 const BookmarkDiv = styled(DivColumn)`
   padding-top: 40px;
   justify-content: flex-start;
-  min-height: 400px;
 `;
 
 const BodyDiv = styled.div`
