@@ -1,6 +1,7 @@
 const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 const YOUTUBE_LINK = "https://www.googleapis.com/youtube/v3";
 const CHANNEL_API_LINK = `${YOUTUBE_LINK}/channels`;
+const SEARCH_API_LINK = `${YOUTUBE_LINK}/search`;
 const PLAYLISTITEM_API_LINK = `${YOUTUBE_LINK}/playlistItems`;
 
 interface IThumbnail {
@@ -19,19 +20,14 @@ export interface INewVideo {
   title: string;
 }
 
-export const getYoutubers = (link: string) => {
+export const getYoutuberChannelId = (link: string) => {
   return fetch(
-    `${CHANNEL_API_LINK}/?part=snippet&id=${link}&key=${YOUTUBE_API_KEY}`
+    `${SEARCH_API_LINK}/?part=snippet&maxResults=1&q=${link}&key=${YOUTUBE_API_KEY}`
   )
     .then((response) => response.json())
     .then((response) => {
-      const { thumbnails, title } = response.items[0].snippet;
-      const t = thumbnails?.default;
-      const youtuber: IYoutuberInfo = {
-        title,
-        thumbnails: t,
-      };
-      return youtuber;
+      const { channelId } = response.items[0].snippet;
+      return channelId;
     });
 };
 

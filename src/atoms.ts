@@ -112,11 +112,16 @@ export const isYoutuberLink = selectorFamily({
       const bookmarks: IBookmark[] = get(bookmarkState);
       const bookmark = bookmarks.filter((item) => item.id === id)[0];
       if (bookmark) {
-        const data = bookmark.link.match("/.*youtube.com/channel/(.*)");
-        if (data === null) {
-          return false;
+        let data = bookmark.link.match("/.*youtube.com/(channel|c.*)/(.*)");
+
+        if (data === null) return false;
+        if (data[1] === "c") {
+          const decodeUrl = decodeURI(data[2]);
+          data[2] = decodeUrl;
+          console.log(data);
         }
-        return data[1];
+        const isShort = data[1] === "c" ? true : false;
+        return { isShort, link: data[2] };
       }
       return false;
     },

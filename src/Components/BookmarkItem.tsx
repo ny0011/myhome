@@ -45,7 +45,9 @@ function BookmarkItem({ id, link, title }: IBookmark) {
       {title ? (
         <BookmarkItemContainer rotatevalue={rotatevalue}>
           <BookmarkItemList>
-            {isYoutuber ? <Youtube link={isYoutuber} /> : null}
+            {isYoutuber ? (
+              <Youtube link={isYoutuber.link} isShort={isYoutuber.isShort} />
+            ) : null}
             <A href={link} rel="noreferrer noopener" target="_blank">
               {title}
             </A>

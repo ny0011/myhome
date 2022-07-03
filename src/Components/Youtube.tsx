@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useQuery, useQueryClient } from "react-query";
 import { useSetRecoilState } from "recoil";
-import { getNewVideos, INewVideo, getUploadLink } from "../api";
+import {
+  getNewVideos,
+  INewVideo,
+  getUploadLink,
+  getYoutuberChannelId,
+} from "../api";
 import { newVideoState } from "../atoms";
 import {
   BookmarkItemYoutubeList,
@@ -10,15 +15,23 @@ import {
 
 interface Iprops {
   link: string;
+  isShort: boolean;
 }
 
 const queryOptions = { refetchOnWindowFocus: false, keepPreviousData: true };
 
-function Youtube({ link }: Iprops) {
+function Youtube({ link, isShort }: Iprops) {
   const [isActive, setActive] = useState(true);
   const setNewVideoState = useSetRecoilState(newVideoState);
 
-  const fetchWithPrevious = async (link: string, previous: any) => {
+  const fetchWithPrevious = async (
+    link: string,
+    isShort: boolean,
+    previous: any
+  ) => {
+    if (isShort) {
+      link = await getYoutuberChannelId(link);
+    }
     const uploadLink = await getUploadLink(link);
     const newvideo = await getNewVideos(uploadLink);
     if (previous === undefined) return newvideo;
@@ -37,7 +50,7 @@ function Youtube({ link }: Iprops) {
     ]);
     return useQuery(
       ["youtuber_newvideo", link],
-      () => fetchWithPrevious(link, previous),
+      () => fetchWithPrevious(link, isShort, previous),
       queryOptions
     );
   };
