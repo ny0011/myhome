@@ -8,6 +8,7 @@ import {
 } from "../Styles/BookmarkUI";
 import { theme } from "../theme";
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 function getWindowDimensions() {
   const { innerWidth: width, innerHeight: height } = window;
@@ -54,18 +55,24 @@ function BookmarkList() {
           ></BookmarkItem>
         );
       })}
-      {newvideo.title && (width > tablet || width < mobile) ? (
-        <BookmarkThumbnailContainer>
-          <a href={videourl}>
-            <BookmarkThumbnailImg
-              src={newvideo.thumbnail.url}
-              height={newvideo.thumbnail.height}
-              width={newvideo.thumbnail.width}
-              alt="newvideo thumbnail"
-            />
-          </a>
-        </BookmarkThumbnailContainer>
-      ) : null}
+      <AnimatePresence initial={false}>
+        {newvideo.title && (width > tablet || width < mobile) ? (
+          <BookmarkThumbnailContainer
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <a href={videourl}>
+              <BookmarkThumbnailImg
+                src={newvideo.thumbnail.url}
+                height={newvideo.thumbnail.height}
+                width={newvideo.thumbnail.width}
+                alt="newvideo thumbnail"
+              />
+            </a>
+          </BookmarkThumbnailContainer>
+        ) : null}
+      </AnimatePresence>
     </BookmarkListContainer>
   );
 }

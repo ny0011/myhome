@@ -125,7 +125,7 @@ export const isYoutuberLink = selectorFamily({
 const DEFAULT_NEWVIDEO: INewVideo = {
   videoId: "",
   videoPublishedAt: "",
-  thumbnail: { height: 320, url: "", width: 180 },
+  thumbnail: { height: 180, url: "", width: 320 },
   title: "",
 };
 

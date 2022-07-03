@@ -3,7 +3,10 @@ import { useQuery, useQueryClient } from "react-query";
 import { useSetRecoilState } from "recoil";
 import { getNewVideos, INewVideo, getUploadLink } from "../api";
 import { newVideoState } from "../atoms";
-import { BookmarkItemYoutubeList } from "../Styles/BookmarkUI";
+import {
+  BookmarkItemYoutubeList,
+  BookmarkItemYoutubeLoading,
+} from "../Styles/BookmarkUI";
 
 interface Iprops {
   link: string;
@@ -54,7 +57,7 @@ function Youtube({ link }: Iprops) {
   return (
     <>
       {isLoading ? (
-        <div>...</div>
+        <BookmarkItemYoutubeLoading>...</BookmarkItemYoutubeLoading>
       ) : (
         <BookmarkItemYoutubeList
           className={isActive ? undefined : "inactive"}

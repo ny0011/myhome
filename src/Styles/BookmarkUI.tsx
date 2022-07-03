@@ -54,6 +54,17 @@ export const BookmarkItemYoutubeList = styled(A)`
   }
 `;
 
+export const BookmarkItemYoutubeLoading = styled.div`
+  @media ${({ theme }) => theme.device.mobile} {
+    position: initial;
+    font-size: 1.2em;
+  }
+  color: ${(props) => props.theme.white.lighter};
+  position: absolute;
+  top: -20px;
+  font-size: 1em;
+`;
+
 export const BookmarkItemIconList = styled(Div)`
   @media ${({ theme }) => theme.device.mobile} {
     position: initial;
@@ -150,6 +161,6 @@ export const BookmarkThumbnailImg = styled.img`
     height: 90px;
   }
 `;
-export const BookmarkThumbnailContainer = styled.div`
+export const BookmarkThumbnailContainer = styled(MotionDiv)`
   margin-top: 10px;
 `;
